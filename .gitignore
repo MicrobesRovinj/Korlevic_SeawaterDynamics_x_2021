@@ -1,0 +1,14 @@
+Rplots.pdf
+*.qsub*
+mothur*logfile
+
+code/mothur/*
+data/*/*
+!data/raw/primer.oligos
+!data/raw/metadata.csv
+!data/raw/group_colors.csv
+!data/references/atcc_v4.fasta
+!data/raw/NC_1_18118-0070_S59_L001_R1_001.fastq
+!data/raw/NC_1_18118-0070_S59_L001_R2_001.fastq
+!data/raw/NC_5_18118-0423_R1_all.fastq
+!data/raw/NC_5_18118-0423_R2_all.fastq
