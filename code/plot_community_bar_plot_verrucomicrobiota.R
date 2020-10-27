@@ -1,11 +1,11 @@
 #################################################################################################################
-# plot_community_bar_plot_alphaproteobacteria.R
+# plot_community_bar_plot_verrucomicrobiota.R
 # 
-# A script to plot sequence abundances of groups from the class Alphaproteobacteria of each sample.
+# A script to plot sequence abundances of groups from the phylum Verrucomicrobiota of each sample.
 # Dependencies: data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.nr_v138.wang.tax.summary
 #               data/raw/metadata.csv
 #               data/raw/group_colors.csv
-# Produces: results/figures/alphaproteobacteria_bar_plot.jpg
+# Produces: results/figures/verrucomicrobiota_bar_plot.jpg
 #
 #################################################################################################################
 
@@ -40,18 +40,18 @@ community <- mutate_at(community, 5:ncol(community), list(~case_when(
 
 # Selecting groups for plotting
 select <- filter(community,
-               taxlevel==6 &
-               str_detect(rankID, paste0(filter(community, str_detect(taxon, "^Alphaproteobacteria$"))$rankID, "\\."))) %>%
-  filter_at(6:ncol(.), any_vars(. >= 2))
+                 taxlevel==6 &
+                   str_detect(rankID, paste0(filter(community, str_detect(taxon, "^Verrucomicrobiota$"))$rankID, "\\."))) %>%
+  filter_at(6:ncol(.), any_vars(. >= 1))
 
 plot <- filter(community,
                taxlevel==6 &
-               str_detect(rankID, paste0(filter(community, str_detect(taxon, "^Alphaproteobacteria$"))$rankID, "\\."))) %>%
+                 str_detect(rankID, paste0(filter(community, str_detect(taxon, "^Verrucomicrobiota$"))$rankID, "\\."))) %>%
   mutate_at(5:ncol(.), list(~. / sum(.) * 100)) %>%
   ungroup() %>%
   filter(rankID %in% select$rankID) %>%
-  bind_rows(summarise_all(., list(~ifelse(is.numeric(.), 100-sum(.), paste("Other_Alphaproteobacteria"))))) %>%
-# Removing the last digit from rankID for the next step
+  bind_rows(summarise_all(., list(~ifelse(is.numeric(.), 100-sum(.), paste("Other_Verrucomicrobiota"))))) %>%
+  # Removing the last digit from rankID for the next step
   mutate(rankID=if_else(taxon=="uncultured", str_replace(rankID, "\\.\\d+$", ""), rankID))
 
 # Adding data to "uncultured" taxa describing the higher taxonomic level to which they belong
@@ -70,18 +70,7 @@ color <- read_tsv("data/raw/group_colors.csv") %>%
 # Generating italic names for taxonomic groups
 names <- parse(text=case_when(str_detect(plot$taxon, "uncultured") ~ paste0("plain('Uncultured')~italic('", str_remove(plot$taxon, "uncultured_"), "')"),
                               str_detect(plot$taxon, "unclassified") ~ paste0("italic('", str_remove(plot$taxon, "_unclassified"), "')~plain('(NR)')"),
-                              plot$taxon=="OCS116_clade_ge" ~ "plain('OCS116 Clade')",
-                              plot$taxon=="Candidatus_Puniceispirillum" ~ "plain('\"')*italic('Candidatus')~plain('Puniceispirillum\"')",
-                              plot$taxon=="SAR116_clade_ge" ~ "plain('SAR116 Clade')",
-                              plot$taxon=="Stappiaceae_ge" ~ "italic('Stappiaceae')",
-                              plot$taxon=="HIMB11" ~ "plain('HIMB11')",
-                              plot$taxon=="AEGEAN-169_marine_group_ge" ~ "plain('AEGEAN-169 Marine Group')",
-                              plot$taxon=="Clade_Ia" ~ "plain('Clade Ia')",
-                              plot$taxon=="Clade_Ib" ~ "plain('Clade Ib')",
-                              plot$taxon=="Clade_II_ge" ~ "plain('Clade II')",
-                              plot$taxon=="Clade_III_ge" ~ "plain('Clade III')",
-                              plot$taxon=="Other_Alphaproteobacteria" ~ "plain('Other')~italic('Alphaproteobacteria')",
-                              plot$taxon=="S25-593_ge" ~ "plain('S25-593')",
+                              plot$taxon=="Other_Verrucomicrobiota" ~ "plain('Other')~italic('Verrucomicrobiota')",
                               TRUE ~ paste0("italic('", plot$taxon, "')")))
 
 # Tidying the sequence abundance data
@@ -103,9 +92,9 @@ plot <- inner_join(metadata, plot, by=c("ID"="Group")) %>%
 # Selecting the relative abundance of the targeted group in the whole community, tidying the obtained data and
 # joining with metadata
 whole <- filter(community,
-                taxlevel==3) %>%
+                taxlevel==2) %>%
   gather(key="Group", value="abundance", 6:ncol(.)) %>%
-  filter(taxon=="Alphaproteobacteria")
+  filter(taxon=="Verrucomicrobiota")
 
 whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
@@ -162,7 +151,4 @@ p <- ggplot(plot) +
         strip.text=element_text(face="bold", size=22, hjust=0.5))
 
 # Saving
-p <- cowplot::ggdraw(p) +
-     cowplot::draw_line(x=c(0.875, 0.875), y=c(0.170, 0.253), size=0.5) +
-     cowplot::draw_label("SAR11 Clade", x=0.885, y=0.212, hjust=0,  fontfamily="Times", size=12)
-ggsave("results/figures/alphaproteobacteria_bar_plot.jpg", p, width=297, height=210, units="mm")
+ggsave("results/figures/verrucomicrobiota_bar_plot.jpg", p, width=297, height=210, units="mm")

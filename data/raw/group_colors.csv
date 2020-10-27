@@ -9,6 +9,10 @@ Other_Bacteroidota	ivory
 Other_Alphaproteobacteria	ivory	
 Other_Gammaproteobacteria	ivory	
 Other_Deltaproteobacteria	ivory	
+Other_Actinobacteriota	ivory	
+Other_Verrucomicrobiota	ivory	
+Other_Crenarchaeota	ivory	
+Other_Thermoplasmatota	ivory	
 Crenarchaeota	slateblue4	PHYLUM
 Euryarchaeota	turquoise3	
 Nanoarchaeota	yellow	
@@ -33,6 +37,7 @@ Acidobacteria	red4
 Desulfobacterota	tan3	
 Myxococcota	darkmagenta	
 Bdellovibrionota	violet	
+Campilobacterota	darkmagenta	
 Woesearchaeia	yellow	CLASS
 Alphaproteobacteria	lightblue	
 Alphaproteobacteria_unclassified	gray40	
@@ -98,6 +103,11 @@ Spongiibacteraceae_unclassified	sienna
 Desulfobacteraceae_unclassified	bisque1	
 Desulfobulbaceae_unclassified	sienna	
 Desulfocapsaceae_unclassified	khaki3	
+Microbacteriaceae_unclassified	yellow	
+Halieaceae_unclassified	yellowgreen	
+SAR116_clade_unclassified	mistyrose	
+Rhodobacteraceae_unclassified	forestgreen	
+Porticoccaceae_unclassified	lightskyblue	
 Bifidobacterium	tomato2	GENUS
 Bacteroides	dodgerblue3	
 Porphyromonas	cornflowerblue	
@@ -109,7 +119,6 @@ Lactobacillus	wheat3
 Streptococcus	yellow	
 Clostridium_sensu_stricto_1	darkmagenta	
 Neisseria	limegreen	
-Halieaceae_unclassified	yellowgreen	
 Escherichia-Shigella	sandybrown	
 Acinetobacter	darkkhaki	
 Spirulina_DRTO-55.2	yellow	
@@ -149,13 +158,11 @@ Rubidimonas	black
 Algitalea	gray	
 OCS116_clade_ge	darkmagenta	
 SAR116_clade_ge	violet	
-SAR116_clade_unclassified	mistyrose	
 Candidatus_Puniceispirillum	mistyrose	
 Pseudahrensia	darkorange4	
 Amylibacter	yellow	
 Ascidiaceihabitans	firebrick1	
 HIMB11	darkseagreen1	
-Rhodobacteraceae_unclassified	forestgreen	
 AEGEAN-169_marine_group_ge	gray	
 Clade_Ia	dodgerblue3	
 Clade_Ib	deepskyblue3	
@@ -185,3 +192,22 @@ Stappiaceae_ge	darkkhaki
 Tateyamaria	darkolivegreen3	
 uncultured_Desulfocapsaceae	darksalmon	
 SEEP-SRB4	gray40	
+S25-593_ge	tan3	
+uncultured_Ectothiorhodospiraceae	gold2	
+Marinobacterium	orange	
+Pseudomonas	darkorange4	
+SAR92_clade	cyan	
+Spongiibacter	dodgerblue3	
+KI89A_clade_ge	darkmagenta	
+OM182_clade_ge	darksalmon	
+Pseudohongiella	darkseagreen1	
+Crocinitomix	gold	
+Fluviicola	darkgoldenrod3	
+NS9_marine_group_ge	pink	
+Candidatus_Actinomarina	tomato2	
+Coraliomargarita	tomato2	
+Lentimonas	darkorange	
+Luteolibacter	yellow	
+Roseibacillus	darkolivegreen3	
+Candidatus_Nitrosopumilus	slateblue4	
+Marine_Group_II_ge	tan	

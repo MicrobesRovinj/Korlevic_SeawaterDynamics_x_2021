@@ -9,6 +9,11 @@ library("tinytex")
 library("tidyverse")
 library("vegan")
 library("RColorBrewer")
+library("lemon")
+library("Hmisc")
+library("qvalue")
+library("tidygraph")
+library("ggraph")
 
 ############################################################
 # Options for knitr and Rmarkdown rendering
