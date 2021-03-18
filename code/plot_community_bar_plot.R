@@ -14,8 +14,7 @@ community <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.uniq
   filter(!str_detect(taxon, "^Eukaryota")) %>%
   filter(taxon!="Root")
 
-# Removing chloroplast and mitochondrial sequences and subtracting their number from higher taxonomic levels to which
-# they belong
+# Removing chloroplast and mitochondrial sequences and subtracting their number from higher taxonomic levels to which they belong
 chloroplast <- filter(community, str_detect(taxon, "^Chloroplast$"))$rankID
 mitochondria <- filter(community, str_detect(taxon, "^Mitochondria$"))$rankID
 community <- mutate_at(community, 5:ncol(community), list(~case_when(
@@ -78,6 +77,7 @@ Sys.setlocale(locale="en_GB.utf8")
 plot <- inner_join(metadata, plot, by=c("ID"="Group")) %>%
   mutate(taxon=factor(taxon, levels=unique(plot$taxon))) %>%
   mutate(label=factor(label, levels=metadata$label)) %>%
+  mutate(station=factor(station, levels=c("S", "F"))) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
 
 # Generating plot

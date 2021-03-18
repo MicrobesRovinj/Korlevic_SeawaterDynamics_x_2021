@@ -1,0 +1,459 @@
+---
+title: "**Prokaryotic community temporal variation in a coastal marine environment**"
+output:
+  pdf_document:
+    keep_tex: true
+    includes:
+      in_header: header.tex
+fontsize: 12pt
+geometry: margin=1.0in
+csl: citation_style.csl #Get themes at https://github.com/citation-style-language/styles
+bibliography: references.bib
+---
+
+```{r knitr_settings, eval=TRUE, echo=FALSE, cache=FALSE}
+opts_chunk$set("tidy" = TRUE)
+opts_chunk$set("echo" = FALSE)
+opts_chunk$set("eval" = TRUE)
+opts_chunk$set("warning" = FALSE)
+opts_chunk$set("cache" = FALSE)
+opts_chunk$set("message" = FALSE)
+
+inline_hook <- function(x){
+	print(x)
+
+	if(is.list(x)){
+		x <- unlist(x)
+	}
+
+	if(is.numeric(x)){
+		if(abs(x - round(x)) < .Machine$double.eps^0.5){
+			paste(format(x,big.mark=',', digits=0, scientific=FALSE))
+		} else {
+			paste(format(x,big.mark=',', digits=1, nsmall=1, scientific=FALSE))
+		}
+	} else {
+    	paste(x)      
+	}
+}
+knitr::knit_hooks$set(inline=inline_hook)
+```
+
+\vspace{20mm}
+Marino Korlević^1$*$^, Marsej Markovski^1^, Gerhard J. Herndl^2,3^ and Mirjana Najdek^1^
+
+1\. Center for Marine Research, Ruđer Bošković Institute, Croatia
+
+2\. Department of Functional and Evolutionary Ecology, University of Vienna, Austria
+
+3\. NIOZ, Department of Marine Microbiology and Biogeochemistry, Royal Netherlands Institute for Sea Research, Utrecht University, The Netherlands
+
+^$*$^To whom correspondence should be addressed:
+
+Marino Korlević
+
+G. Paliaga 5, 52210 Rovinj, Croatia
+
+Tel.: +385 52 804 768
+
+Fax: +385 52 804 780
+
+e-mail: marino.korlevic@irb.hr
+
+Running title: Temporal variation of a coastal prokaryotic community
+
+\newpage
+\linenumbers
+\sisetup{mode=text}
+\setlength\parindent{24pt}
+
+## Abstract
+Prokaryotic communities inhabiting surface waters of temperate areas exhibit patterns of seasonal succession. Studies describing these temporal changes were mainly not performed at stations located in the proximity of the coast. The temporal variation of these communities was determined in the northern Adriatic Sea surface waters sampled at two stations located in the close proximity of its western shore. Sequencing of the V4 region of the 16S rRNA gene identified a community richness maximum in December and a temporal exchange of a spring, summer and autumn/winter-specific community. Temperature was shown to be the main environmental force explaining community temporal variation. Taxonomic analysis determined low-level taxa present throughout the year and groups specific to each identified temporal community. The *Synechococcus*, SAR86 clade, NS5 marine group and *Cryomorphaceae* were detected through the year. In contrast, the spring community was characterized by the NS4 marine group, *Formosa* and *Rhodobacteraceae*, the summer community by SAR11 subclades II and III, HIMB11, AEGEAN-169 marine group, OM60 (NOR5) clade and *Litoricola* and the autumn/winter community by SAR11 subclade Ia and *Archaea*. Taken together, prokaryotic communities inhabiting coastal surface waters exhibit general phenomena similar to other surface associated assemblages, but are also characterized by season-specific community structures and temporal patterns of certain taxonomic groups that differ from other areas.
+
+\newpage
+## Introduction
+Prokaryotic picoplankton communities inhabiting marine surface waters exhibit patterns of seasonal succession. These temporal community changes were described for surface waters of polar, temperate and (sub)tropical regions [@Bunse2017]. In temperate regions changes were mainly associated with summer water column stratification, winter mixing and spring phytoplankton blooms [@Bunse2017; @Mestre2020; @Teeling2012]. Although general successional patterns in these waters were reported, some local differences were also observed. While some studies have reported the exchange of multiple community states during the year [@Gilbert2009; @Sintes2013a; @Lindh2015; @El-Swais2015], others have observed a community separation in only two major groups [@Mestre2020], indicating that beside global patterns local environmental conditions may influence seasonal community change.
+
+Seasonal community variation in temperate waters usually starts with assemblages characteristic for spring phytoplankton blooms. The successional pattern of different microbial groups during the pre-bloom, bloom and bloom-decay periods have been described in detail [@Teeling2012; @Sintes2013a; @Teeling2016]. The pre-bloom community is generally dominated by members of the alphaproteobacterial SAR11 clade, during the bloom *Bacteroidota* taxa such as *Formosa*, *Polaribacter*, *Ulvibacter* and the VIS6 clade become abundant while the decay period is characterized by *Gammaproteobacteria*, i.e. the SAR92 clade [@Teeling2012; @Sintes2013a; @Teeling2016]. Beside taxa co-occurring with phytoplankton blooms, communities specific to summer water stratification and winter mixing were also described [@Mestre2020]. Usually, *Cyanobacteria* are enriched during summer periods, while the SAR11 clade exhibit an interesting trend with some sub-clades being characteristic for summer and some for winter months [@Salter2015; @Mestre2020].
+
+The majority of studies describing temporal changes in temperate areas were performed at long-term time series locations, such as the L4 sampling site of the Western Channel Observatory [@Gilbert2009; @Gilbert2012], Blanes Bay Microbial Observatory (BBMO) [@Alonso-Saez2007; @Mestre2020], Linnaeus Microbial Observatory [@Lindh2015], station Kabeltonne in the German Bight [@Teeling2012; @Teeling2016] and station E2 of the RADIALES time-series project [@Alonso-Saez2015]. Data obtained from such time-series studies have found that a set of abiotic and biotic factors drive the temporal community variation [@Bunse2017]. It was suggested that biological interactions primarily affect microbial dynamics over shorter time periods of days to weeks, while physicochemical parameters are mainly responsible for observed seasonal successional patterns [@Needham2016; @Mestre2020; @Gilbert2009; @Bunse2017; @Fuhrman2015]. In addition, several studies indicate that the phytoplankton derived dissolved organic matter (DOM) indirectly drives community dynamics [@Bunse2017; @Lindh2015; @Teeling2012; @Teeling2016; @Needham2016]. It is therefore worth investigating if such general such general interactions also apply to coastal microbial communities inhabiting the proximity of the shore.
+
+To describe the temporal variation of microbial communities in ecosystems located in the proximity of the shore and to disentangle the environmental variables responsible for their temporal change it is important to apply a high-frequency sampling approach. In order to determine the temporal variation of prokaryotic picoplankton communities in these habitats monthly sampling of surface waters at two stations along the western coast of the northern Adriatic Sea was performed. In addition, to assess the main environmental parameters associated with community changes compositional data were constrained by a set of previously reported environmental parameters measured at the same time [@Najdek2020; @Najdek2020a].
+
+\newpage
+## Materials and methods
+### Sampling
+Surface seawater from the northern Adriatic Sea was collected in the proximity of the coast (25 -- 50 \si{m}) in two closely located bays (~7 km apart), Saline (\ang{45;7;5} N, \ang{13;37;20} E) and Funtana (\ang{45;10;39} N, \ang{13;35;42} E), by diving (depth, ~1.5 \si {m}) in 10 \si{l} containers and transported to the laboratory where 10 -- 20 \si{l} were filtered through a 20 \si{\um} mesh net. The filtrate was further sequentially filtered using a peristaltic pump through 3 \si{\um} and 0.2 \si{\um} polycarbonate membrane filters (Whatman, United Kingdom). Filters were dried briefly at room temperature and stored at \num{-80} \si{\degreeCelsius}. Samples were collected monthly from July 2017 to October 2018. At the same time when samples for picoplankton community structure assessment were collected additional samples were retrieved to determined a set of environmental parameters as reported previously [@Najdek2020; @Najdek2020a].   
+
+### DNA isolation
+Picoplankton DNA was isolated from 0.2 \si{\um} polycarbonate filters according to @Massana1997 with slight modifications. Following phenol-chloroform extractions, 1/10 of 3 \si{\Molar} chilled sodium acetate (pH 5.2) was added. DNA was precipitated by the addition of 1 volume of chilled isopropanol, incubating the mixtures overnight at \num{-20} \si{\degreeCelsius} and centrifuging at 20,000 × *g* and 4 \si{\degreeCelsius} for 21 \si{\minute}. Pellets were washed twice with 500 \si{\ul} of 70 \si{\percent} chilled ethanol and centrifuged after each washing step at 20,000 × *g* and 4 \si{\degreeCelsius} for 5 \si{\minute}. Air-dried pellets were re-suspended in 50 \si{\ul} of deionized water. 
+
+### Illumina 16S rRNA sequencing
+The V4 region of the gene for 16S rRNA was sequenced using the Illumina MiSeq platform as described previously [@Korlevic, submitted]. A two-step PCR procedure was applied to amplify the target region. In the first PCR, primers 515F ($5'$-GTGYCAGCMGCCGCGGTAA-$3'$) and 806R ($5'$-GGACTACNVGGGTWTCTAAT-$3'$) from the Earth Microbiome Project (https://earthmicrobiome.org/protocols-and-standards/16s/) were used [@Caporaso2012; @Apprill2015; @Parada2016]. A tagged sequence was added to these primers on their $5'$ end. PCR products were purified and sent for Illumina MiSeq sequencing at IMGM Laboratories, Martinsried, Germany. Prior to sequencing at IMGM, adapter and sample-specific index sequences were incorporated during the second PCR amplification of the two-step PCR procedure using primers targeting the tagged region. Beside samples, a positive and negative control were included in each sequencing batch. For a positive control a mock community consisting of evenly mixed DNA material originating from 20 bacterial strains (ATCC MSA-1002, ATCC, USA) was used, while the negative control comprised PCR reactions without DNA template. Reads obtained in this study (Bay of Saline) were combined with reads previously reported in a study describing temporal dynamics of surface associated microbial communities (Bay of Funtana) [@Korlevica, submitted] and analysed together. Sequences processed in this study have been deposited in the European Nucleotide Archive (ENA) at EMBL-EBI under accession numbers SAMEA6648771 -- SAMEA6648788, SAMEA6648824, SAMEA6648825, SAMEA8117500 -- SAMEA8117516.
+
+### Sequence analysis
+```{r error}
+# Calculating the error rate based on the ATCC MSA-1002 mock community
+error <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.error.summary", na="") %>%
+  filter(numparents==1) %>%
+  mutate(mismatches_weight=weight*mismatches) %>%
+  mutate(total_weight=weight*total)
+error <- sum(error$mismatches_weight)/sum(error$total_weight)*100
+
+# Calculating the number of sequences in negative controls
+nc <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.nr_v138.wang.tax.summary") %>%
+  filter(taxon=="Root") %>%
+  select(NC_1)
+```
+Sequences obtained in the present study were analysed using mothur (version 1.43.0) [@Schloss2009] according to the MiSeq Standard Operating Procedure (MiSeq SOP; https://mothur.org/wiki/MiSeq_SOP) [@Kozich2013] and recommendations given by the Riffomonas project to enhance data reproducibility (http://www.riffomonas.org/). Computing was performed on the computer cluster Isabella (University Computing Center, University of Zagreb). Alignment and classification was performed using the SILVA SSU Ref NR 99 database (release 138; http://www.arb-silva.de) [@Quast2013; @Yilmaz2014]. Pipeline data processing and visualisation was done using R (version 3.6.0) [@RCoreTeam2019] in combination with packages vegan (version 2.5.6) [@Oksanen2019], tidyverse (version 1.2.1) [@Wickham2017; @Wickham2019] and multiple other packages [@Xie2019; @Xie2014; @Xie2015; @Allaire2019; @Xie2018; @Xie2019a; @Xie2019b; @Neuwirth2014; @McKinnonEdwards2019; @Wilke2019; @Zhu2019]. The detailed analysis procedure including the RMarkdown file are available in the GitHub repository (https://github.com/MicrobesRovinj/Korlevic_SeawaterDynamics_x_2021). The average sequencing error rate of `r error` \si{\percent} was calculated based on the ATCC MSA-1002 mock community included in each sequencing batch, which is in line with previously reported values for next-generation 16S rRNA amplicon sequencing [@Kozich2013; @Schloss2016]. Also, negative controls processed together with the samples yielded on average only `r nc` sequences after quality curation.
+
+\newpage
+## Results
+
+```{r community}
+# Loading input data containing sequence abundances and subsequent input data customization
+community <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.nr_v138.wang.tax.summary") %>%
+  filter(!str_detect(taxon, "^Eukaryota")) %>%
+  filter(taxon!="Root")
+
+# Removing chloroplast and mitochondrial sequences and subtracting their number from higher taxonomic levels to which they belong
+chloroplast <- filter(community, str_detect(taxon, "^Chloroplast$"))$rankID
+mitochondria <- filter(community, str_detect(taxon, "^Mitochondria$"))$rankID
+community <- mutate_at(community, 5:ncol(community), list(~case_when(
+    rankID==str_extract(chloroplast, "(\\d+\\.){3}\\d+") ~ . - .[taxon=="Chloroplast"],
+    rankID==str_extract(chloroplast, "(\\d+\\.){2}\\d+") ~ . - .[taxon=="Chloroplast"],
+    rankID==str_extract(chloroplast, "(\\d+\\.){1}\\d+") ~ . - .[taxon=="Chloroplast"],
+  TRUE ~ .))) %>%
+  filter(!str_detect(taxon, "^Chloroplast")) %>%
+  mutate_at(5:ncol(.), list(~case_when(
+    rankID==str_extract(mitochondria, "(\\d+\\.){4}\\d+") ~ . - .[taxon=="Mitochondria"],
+    rankID==str_extract(mitochondria, "(\\d+\\.){3}\\d+") ~ . - .[taxon=="Mitochondria"],
+    rankID==str_extract(mitochondria, "(\\d+\\.){2}\\d+") ~ . - .[taxon=="Mitochondria"],
+    rankID==str_extract(mitochondria, "(\\d+\\.){1}\\d+") ~ . - .[taxon=="Mitochondria"],
+    TRUE ~ .))) %>%
+  filter(!str_detect(taxon, "^Mitochondria")) %>%
+  select(-ATCC_1, -ATCC_5, -NC_1)
+
+# Calculating the number of sequences in millions
+million_sequences <- filter(community, taxon=="Archaea" | taxon=="Bacteria") %>%
+  select(total) %>%
+  sum()/1e6
+
+# Loading metadata
+metadata <- read_tsv("data/raw/metadata.csv")
+
+# Calculating number of samples
+samples_saline <- filter(metadata, station=="S") %>%
+  summarise(n=n())
+samples_funtana <- filter(metadata, station=="F") %>%
+  summarise(n=n())
+
+# Calculating the minimal and maximal number of sequences
+min_max <- filter(community, taxon=="Archaea" | taxon=="Bacteria") %>%
+  summarise_at(6:ncol(.), sum) %>%
+  summarise(min=min(.), max=max(.))
+
+# Calculating the relative abundance of Archaea and Bacteria
+archaea_bacteria <- filter(community, taxon=="Archaea" | taxon=="Bacteria") %>%
+  mutate_at(5:ncol(.), list(~. / sum(.) * 100)) %>%
+  gather(key="Group", value="abundance", 6:(ncol(.))) %>%
+  group_by(taxon) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance), .groups="drop")
+```
+
+```{r shared}
+# Loading OTU/sample data
+shared <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.opti_mcc.shared")
+
+# Calculating the number of OTUs before rarefaction
+no_otus <- select(shared, starts_with("Otu")) %>%
+  colnames() %>%
+  length()
+
+# Loading rarefied community data calculated during the generation of the richness and diversity calculators plot
+load(file="results/numerical/rarefied.Rdata")
+
+# Calculating the number of OTUs after rarefaction
+no_otus_rarefied <- select(rarefied, starts_with("Otu")) %>%
+  colnames() %>%
+  length()
+
+# Calculating the maximal and minimal number of OTUs after rarefaction
+otu_min_max <- select(rarefied, starts_with("Otu")) %>%
+  decostand(., method="pa") %>%
+  transmute(sum=rowSums(.))
+```
+
+Sequencing of `r samples_saline` samples from the Bay of Saline and `r samples_funtana` samples from the Bay of Funtana (one of the samples was a sequencing replicate) yielded `r million_sequences` million reads after quality curation and exclusion of sequences without known relatives (no relative sequences), eukaryotic, chloroplast and mitochondrial sequences (\autoref{supp-nseq_notus}). The number of reads per sample ranged from `r min_max$min` to `r min_max$max` (\autoref{supp-rarefaction} and \autoref{supp-nseq_notus}). Reads were clustered into `r no_otus` different OTUs at a similarity level of 97 \si{\percent}. To account for different sequencing depth reads were normalized to the minimum number of sequences per sample (`r min_max$min`, \autoref{supp-nseq_notus}) that resulted in `r no_otus_rarefied` different OTUs ranging from `r min(otu_min_max)` to `r max(otu_min_max)` OTUs per sample (\autoref{supp-calculators}).
+
+```{r anosim}
+# Loading metadata 
+metadata_rarefied <- rarefied %>%
+  rownames_to_column("Group") %>%
+  inner_join(., read_tsv("data/raw/metadata.csv"), by=c("Group"="ID"))
+
+# Calculating ANOSIM
+metadata_rarefied_select <- metadata_rarefied %>%
+  select(starts_with("Otu"))
+anosim_season <- anosim(metadata_rarefied_select, metadata_rarefied$season, permutations=999, distance="bray")
+anosim_season_signif <- case_when(anosim_season$signif < 0.05 & anosim_season$signif >= 0.01 ~ 0.05,
+                               anosim_season$signif < 0.01 & anosim_season$signif >= 0.001 ~ 0.01,
+                               anosim_season$signif < 0.001 & anosim_season$signif >= 0.0001 ~ 0.001,
+                               anosim_season$signif < 0.0001 ~ 0.0001,
+                               TRUE ~ anosim_season$signif)
+```
+
+```{r dbrda}
+# Loading statistical results calculated during the generation of the db-RDA figure
+load(file="results/numerical/statistic.dbrda.Rdata")
+```
+
+```{r calculators}
+# Loading estimators and indices data calculated during the generation of the richness and diversity calculators plot
+load(file="results/numerical/estimators_indices_metadata.Rdata")
+```
+
+```{r core_otus}
+# Finding the core OTUs for each station
+core <- metadata_rarefied %>%
+  filter(station=="S") %>%
+  select_if(~ all(. != 0)) %>%
+  select(starts_with("Otu"))
+
+total <- metadata_rarefied %>%
+  filter(station=="S") %>%
+  select(starts_with("Otu"))
+
+core_otus_saline <- length(core)/length(total) * 100
+core_seq_saline <- sum(core)/sum(total) * 100
+
+core <- metadata_rarefied %>%
+  filter(station=="F") %>%
+  select_if(~ all(. != 0)) %>%
+  select(starts_with("Otu"))
+
+total <- metadata_rarefied %>%
+  filter(station=="F") %>%
+  select(starts_with("Otu"))
+
+core_otus_funtana <- length(core)/length(total) * 100
+core_seq_funtana <- sum(core)/sum(total) * 100
+
+core_otus <- (core_otus_saline + core_otus_funtana)/2
+core_seq <- (core_seq_saline + core_seq_funtana)/2
+```
+
+Temporal variations in richness and diversity were determined by calculating the observed number of OTUs, Chao1, ACE, Exponential Shannon and Inverse Simpson [@Jost2006]. Similar trends in richness and diversity were observed at both stations (\autoref{supp-calculators}) characterized by a December 2017 richness maximum both in the Saline (Number of OTUs, `r filter(estimators_indices_metadata, date=="2017-12-13" & station=="S")$S.obs` OTUs) and Funtana (Number of OTUs, `r filter(estimators_indices_metadata, date=="2017-12-14" & station=="F")$S.obs` OTUs) Bay. Interestingly, the Inverse Simpson index did not show an elevated value in December 2017 as the Exponential Shannon index indicating that rare OTUs contributed substantially to the observed richness maxima. To determine temporal changes in the proportion of shared OTUs and communities the Jaccard's and Bray-Curtis similarity coefficients were calculated between consecutive sampling points (\autoref{supp-shared}). Similar trends were observed at both stations with higher stability of shared bacterial and archaeal OTUs (Jaccard’s similarity coefficient) than shared communities (Bray-Curtis similarity coefficient). In addition, a stronger drop in shared communities between March and April 2018 was observed at both stations indicating a more pronounced community shift in this period (\autoref{supp-shared}). Analysis of this time series data showed that only `r core_otus` \si{\percent} of OTUs were present throughout the study period while these persistent OTUs contributed to `r core_seq` \si{\percent} of sequences.
+
+To evaluate the temporal variation of bacterial and archaeal communities Principal Coordinate Analysis (PCoA) of Bray-Curtis distances was applied to the OTU community data (\autoref{pcoa_dbrda}A). Communities specific to summer, autumn/winter and spring could be identified regardless of the station sampled. This separation in three specific communities was further supported by ANOSIM (R = `r format(anosim_season$statistic, digits=2, nsmall=2)`, *p* < `r anosim_season_signif`). To assess which environmental parameter mainly contributes to the observed temporal community variation the community data was constrained by a set of previously reported environmental variables [@Najdek2020; @Najdek2020a] using Distance-Based Redundancy Analysis (db-RDA) (\autoref{pcoa_dbrda}B). Nearly half ($R^2_a=$ `r statistic.dbrda$R2adj*100` \si{\percent}) of the observed community variation could be explained by the explanatory variables. Separation between summer and autumn/winter communities could mainly be explained by temperature, prokaryotic abundance, salinity and nitrite. In contrast, neither variable could strongly explain the separate spring community. 
+
+```{r archaea}
+# Loading input data containing sequence abundances and subsequent input data customization
+community <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.nr_v138.wang.tax.summary") %>%
+  filter(!str_detect(taxon, "^Eukaryota")) %>%
+  filter(taxon!="Root")
+
+# Remove chloroplast and mitochondrial sequences and subtract their number from higher taxonomic levels to which
+# they belong
+chloroplast <- filter(community, str_detect(taxon, "^Chloroplast$"))$rankID
+mitochondria <- filter(community, str_detect(taxon, "^Mitochondria$"))$rankID
+community <- mutate_at(community, 5:ncol(community), list(~case_when(
+    rankID==str_extract(chloroplast, "(\\d+\\.){3}\\d+") ~ . - .[taxon=="Chloroplast"],
+    rankID==str_extract(chloroplast, "(\\d+\\.){2}\\d+") ~ . - .[taxon=="Chloroplast"],
+    rankID==str_extract(chloroplast, "(\\d+\\.){1}\\d+") ~ . - .[taxon=="Chloroplast"],
+  TRUE ~ .))) %>%
+  filter(!str_detect(taxon, "^Chloroplast")) %>%
+  mutate_at(5:ncol(.), list(~case_when(
+    rankID==str_extract(mitochondria, "(\\d+\\.){4}\\d+") ~ . - .[taxon=="Mitochondria"],
+    rankID==str_extract(mitochondria, "(\\d+\\.){3}\\d+") ~ . - .[taxon=="Mitochondria"],
+    rankID==str_extract(mitochondria, "(\\d+\\.){2}\\d+") ~ . - .[taxon=="Mitochondria"],
+    rankID==str_extract(mitochondria, "(\\d+\\.){1}\\d+") ~ . - .[taxon=="Mitochondria"],
+    TRUE ~ .))) %>%
+  filter(!str_detect(taxon, "^Mitochondria")) %>%
+  select(-ATCC_1, -ATCC_5, -NC_1) %>%
+  mutate(`23`=`23_1`+`23_2`) %>%
+  select(-`23_1`, -`23_2`) %>%
+  group_by(taxlevel) %>%
+  mutate_at(5:ncol(.), list(~ . / sum(.) * 100)) %>%
+  ungroup()
+
+# Loading metadata
+metadata <- read_tsv("data/raw/metadata.csv") %>%
+  filter(ID!="23_1") %>%
+  mutate(ID=str_replace(ID, "23_2", "23")) %>%
+  mutate(label=str_replace(label, "24/4-18 F-2", "24/4-18 F"))
+
+# Selecting the relative abundance of the targeted group in the whole community and tidying the obtained data
+whole <- filter(community, taxlevel==1) %>%
+  gather(key="Group", value="abundance", 6:ncol(.)) %>%
+  filter(taxon=="Archaea")
+
+# Calculating the mean and standard deviation during periods of maximum relative contribution
+archaea_max_month <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  filter(date=="2017-12-13" | date=="2017-12-14" |
+         date=="2017-11-22" | date=="2017-11-23" |
+         date=="2018-02-12" | date=="2018-02-13") %>%
+  mutate(date=str_replace(date, "-..$", "")) %>%
+  group_by(date) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance), .groups="drop")
+```
+
+The classification of reads showed that the prokaryotic community was dominated by bacterial (`r filter(archaea_bacteria, taxon=="Bacteria")$mean` ± `r filter(archaea_bacteria, taxon=="Bacteria")$sd` \si{\percent}) over archaeal sequences (`r filter(archaea_bacteria, taxon=="Archaea")$mean` ± `r filter(archaea_bacteria, taxon=="Archaea")$sd` \si{\percent}) (\autoref{community}). A higher relative contribution of archaeal reads was observed only in November 2017 (`r filter(archaea_max_month, date=="2017-11")$mean` ± `r filter(archaea_max_month, date=="2017-11")$sd` \si{\percent}), December 2017 (`r filter(archaea_max_month, date=="2017-12")$mean` ± `r filter(archaea_max_month, date=="2017-12")$sd` \si{\percent}) and February 2018 (`r filter(archaea_max_month, date=="2018-02")$mean` ± `r filter(archaea_max_month, date=="2018-02")$sd` \si{\percent}). The main taxonomic group contributing to the higher relative abundance of *Archaea* in this period was the *Crenarchaeota* "*Candidatus* Nitrosopumilus" and the *Thermoplasmatota* Marine group II. The bacterial community was comprised of well known seawater groups such as the *Actinobacteriota*, *Bacteroidota*, *Cyanobacteria*, *Marinimicrobia*, *Alphaproteobacteria*, *Gammaproteobacteria* and *Verrucomicrobiota* (\autoref{community}). In addition, similar temporal patterns were observed at both stations.
+
+```{r cyano}
+# Selecting the relative abundance of the targeted group in the whole community and tidying the obtained data
+whole <- filter(community, taxlevel==2) %>%
+  gather(key="Group", value="abundance", 6:ncol(.)) %>%
+  filter(taxon=="Cyanobacteria")
+
+# Calculating the mean and standard deviation of all samples
+cyano_all_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance))
+
+# Calculating the mean and standard deviation for each season and station
+cyano_season_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  group_by(season) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance), .groups="drop")
+
+# Calculating the mean and standard deviation for each month
+cyano_month <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  mutate(date=str_replace(date, "-..$", "")) %>%
+  group_by(date) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance), .groups="drop")
+```
+
+```{r bactero}
+# Selecting the relative abundance of the targeted group in the whole community and tidying the obtained data
+whole <- filter(community, taxlevel==2) %>%
+  gather(key="Group", value="abundance", 6:ncol(.)) %>%
+  filter(taxon=="Bacteroidota")
+
+# Calculating the mean and standard deviation of all samples
+bactero_all_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance))
+
+# Calculating the mean and standard deviation for the period spring-summer and autumn-winter
+bactero_season_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  mutate(season=str_replace(season, "^Spring$", "Spring-Summer")) %>%
+  mutate(season=str_replace(season, "^Summer$", "Spring-Summer")) %>%
+  mutate(season=str_replace(season, "^Autumn$", "Autumn-Winter")) %>%
+  mutate(season=str_replace(season, "^Winter$", "Autumn-Winter")) %>%
+  group_by(season) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance), .groups="drop")
+```
+
+*Cyanobacteria* comprised on average `r cyano_all_whole$mean` ± `r cyano_all_whole$sd` \si{\percent} of the prokaryotic community. The highest relative contribution was recorded in winter (`r filter(cyano_season_whole, season=="Winter")$mean` ± `r filter(cyano_season_whole, season=="Winter")$sd` \si{\percent}), mainly caused by the high proportion in the March 2018 sample (`r filter(cyano_month, date=="2018-03")$mean` ± `r filter(cyano_month, date=="2018-03")$sd` \si{\percent}). The cyanobacterial community was largely dominated by *Synechococcus*, especially during periods of higher cyanobacterial presence (\autoref{cyano}). *Bacteroidota* comprised on average `r bactero_all_whole$mean` ± `r bactero_all_whole$sd` \si{\percent} of the community. Slightly higher values were characteristic for spring and summer (`r filter(bactero_season_whole, season=="Spring-Summer")$mean` ± `r filter(bactero_season_whole, season=="Spring-Summer")$sd` \si{\percent}) in comparison to autumn and winter (`r filter(bactero_season_whole, season=="Autumn-Winter")$mean` ± `r filter(bactero_season_whole, season=="Autumn-Winter")$sd` \si{\percent}) (\autoref{community}). Although *Bacteroidota* showed only slight temporal variations, taxa within this group exhibited strong seasonal patterns (\autoref{bactero}). Groups such as the NS5 marine group and uncultured *Cryomorphaceae* were present throughout the year, while sequences classified as *Balneola*, uncultured *Balneolaceae* and the NS11-12 marine group were more pronounced from May to October. In addition, *Formosa* and the NS4 marine group could be detected throughout the study period but specifically contributed to the *Bacteroidota* community in March and April 2018, respectively. Higher values of chloroplast sequences were also recorded at this time (\autoref{supp-chloroplast}). In addition, while uncultured *Saprospiraceae* from the Saline Bay samples contributed substantially to the *Bacteroidota* community in June and July 2018, this phenomenon was not as pronounced in the Funtana Bay (\autoref{bactero}).
+
+```{r alpha}
+# Selecting the relative abundance of the targeted group in the whole community and tidying the obtained data
+whole <- filter(community, taxlevel==3) %>%
+  gather(key="Group", value="abundance", 6:ncol(.)) %>%
+  filter(taxon=="Alphaproteobacteria")
+
+# Calculating the mean and standard deviation of all samples
+alpha_all_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance))
+
+# Calculating the mean and standard deviation for each season
+alpha_season_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  group_by(season) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance), .groups="drop")
+```
+
+Sequences classified as *Alphaproteobacteria* showed the highest relative abundance and comprised on average `r alpha_all_whole$mean` ± `r alpha_all_whole$sd` \si{\percent} of the prokaryotic community (\autoref{community}). Analysis of temporal alphaproteobacterial variation showed higher sequence contribution in summer (`r filter(alpha_season_whole, season=="Summer")$mean` ± `r filter(alpha_season_whole, season=="Summer")$sd` \si{\percent}) and winter (`r filter(alpha_season_whole, season=="Winter")$mean` ± `r filter(alpha_season_whole, season=="Winter")$sd` \si{\percent}) in comparison to autumn (`r filter(alpha_season_whole, season=="Autumn")$mean` ± `r filter(alpha_season_whole, season=="Autumn")$sd` \si{\percent}) and spring (`r filter(alpha_season_whole, season=="Spring")$mean` ± `r filter(alpha_season_whole, season=="Spring")$sd` \si{\percent}). Temporal variation of taxa within this class showed different patterns (\autoref{alpha}). The most pronounced community shift was observed in April 2018 when reads of the usually prominent SAR11 clade were scarce and *Stappiaceae*, *Ascidiaceihabitans* and no relative *Rhodobacteraceae* dominated the alphaproteobacterial community. Subclades within the SAR11 clade also showed different temporal patterns. Subclades II and III characterized the SAR11 community in summer from June to September, while from November to March reads classified as subclade Ia comprised the majority of SAR11 specific sequences. Except by the SAR11 subclades II and III, summer months were also characterized by two other alphaproteobacterial groups, the HIMB11 and the AEGEAN-169 marine group (\autoref{alpha}).
+
+```{r gamma}
+# Selecting the relative abundance of the targeted group in the whole community and tidying the obtained data
+whole <- filter(community, taxlevel==3) %>%
+  gather(key="Group", value="abundance", 6:ncol(.)) %>%
+  filter(taxon=="Gammaproteobacteria")
+
+# Calculating the mean and standard deviation of all samples
+gamma_all_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance))
+
+# Calculating the mean and standard deviation for each season
+gamma_season_whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  group_by(season) %>%
+  summarise(mean=mean(abundance), sd=sd(abundance), .groups="drop")
+```
+
+Reads classified as *Gammaproteobacteria* comprised on average `r gamma_all_whole$mean` ± `r gamma_all_whole$sd` \si{\percent} of the prokaryotic community (\autoref{community}). The season characterized by the highest relative contribution of gammaproteobacterial sequences was spring (`r filter(gamma_season_whole, season=="Spring")$mean` ± `r filter(gamma_season_whole, season=="Spring")$sd` \si{\percent}), while in other periods values ranged form `r filter(gamma_season_whole, season=="Summer" | season=="Autumn" | season=="Winter") %>% filter(mean==min(mean)) %>% select(mean)` ± `r filter(gamma_season_whole, season=="Summer" | season=="Autumn" | season=="Winter") %>% filter(mean==min(mean)) %>% select(sd)` to `r filter(gamma_season_whole, season=="Summer" | season=="Autumn" | season=="Winter") %>% filter(mean==max(mean)) %>% select(mean)` ± `r filter(gamma_season_whole, season=="Summer" | season=="Autumn" | season=="Winter") %>% filter(mean==max(mean)) %>% select(sd)` \si{\percent}. Temporal variation analysis of taxa within *Gammaproteobacteria* showed groups present throughout the year, such as the SAR86 clade, but also season specific taxa, such as *Litoricola*, OM60 (NOR5) clade and SUP05 cluster (\autoref{gamma}). *Litoricola* and the OM60 (NOR5) clade characterized the gammaproteobacterial community from April to August, while sequences specific for the SUP05 cluster were detected from November to March. Taxonomic groups of high level bacterial taxa that comprised a lower proportion of prokaryotic sequences such as the *Actinobacteriota* and *Verrucomicrobiota* also showed temporal variations. During the period of higher relative sequence abundance of *Actinobacteriota*, in the time span between September and December, the actinobacterial community was comprised mainly of the "*Candidatus* Actinomarina". Similarly, in April and May when *Verrucomicrobiota* specific reads were at their maximal relative abundance *Lentimonas* and *Coraliomargarita* were the main constituent of the *Verrucomicrobiota* specific community.
+
+\newpage
+## Discussion
+Prokaryotic communities inhabiting surface waters of temporal areas exhibit patterns of seasonal succession [@Bunse2017]. These temporal variations were mainly studied at long-term time series sites which usually encompass only one sampling station located further away from the coast [@Gilbert2009; @Mestre2020]. In the present study temporal variation of surface prokaryotic communities was determined in the close proximity of the shore. Drawn conclusions were further strengthen by the analysis of time series data at two closely located stations. Similar patterns were observed at both sites indicating that determined phenomena could also be characteristic for prokaryotic communities inhabiting surface waters of a wider area.
+
+Temporal changes in richness were substantial as indicated by the proportion of OTUs present at every sampling point (`r core_otus` \si{\percent}). Sequences clustered into these persistent OTUs comprised a high proportion of reads (`r core_seq` \si{\percent}). Similar proportions of persistent core OTUs and their contribution to the total number of sequences were also reported in other time series studies [@Gilbert2009; @Gilbert2012]. Analysis of temporal variations in alpha diversity showed maximal richness values in December. This observed event is in line with previously reported richness maxima in other areas during colder months [@Mestre2020; @Gilbert2012; @Ladau2013; @El-Swais2015]. It has been suggested that late autumn/winter overturn is responsible for this phenomenon by simply mixing population from deeper parts of the water column with existing ones [@Salter2015; @Garcia2015; @Bunse2017]. Although the samples in this study were retrieved at very shallow locations, water column mixing taking place at deeper areas could bring additional taxa to these locations causing the observed increase in alpha diversity.
+
+The majority of studies analysing temporal community variation usually identified an exchange of multiple community states during the year [@El-Swais2015; @Lindh2015]. In contrast, some studies described only a switch between winter and summer specific assemblages [@Mestre2020; @Ward2017]. It is possible that these differences are a consequence of local conditions. Indeed, some studies attributed the observed lower number of states to the absence of large spring and fall phytoplankton blooms in some areas [@Ward2017]. Analysis of OTU community data from our samples identified three separate microbial assemblages characteristic for spring, summer and autumn/winter. This is in line with studies describing the exchange of multiple states during the year with a separate spring community assemblage [@El-Swais2015; @Lindh2015]. We hypothesize that the separate spring community is a late response to a phytoplankton bloom that can occur in this area [@Mozetic2010; @Manna2021]. Temperature and prokaryotic abundance were identified as the main factors influencing the exchange of communities between the summer and autumn/winter period. It is not surprising that temperature and prokaryotic abundance are similar in explaining this shift as higher prokaryotic abundances were reported in this area during summer months [@Ivancic2010]. The identification of temperature as the single most important driver of community change is in line with previously reported data [@El-Swais2015; @Ward2017; @Mestre2020]. It was proposed that temperature indirectly influences community change through phytoplankton nutrient limitation during water column stratification and nutrient input in times of water column mixing [@Bunse2017]. Factors explaining the onset of a separate spring community were not identified. We hypothesise that based on a slightly higher value of chloroplast specific reads in these samples and the presence of taxa specific for phytoplankton blooms this community was a late prokaryotic response to a phytoplankton bloom even though the concentration of chlorophyll *a* could not explain it.
+
+Differences between communities specific for spring, summer and autumn/winter observed at the level of OTUs could also be seen in the taxonomic composition. The identified spring-specific community contained taxa previously associated with phytoplankton blooms [@Teeling2012; @Sintes2013a; @Teeling2016]. *Formosa* and members within the *Rhodobacteraceae* were associated with phytoplankton blooms in the North Sea [@Teeling2012; @Teeling2016], while the NS4 marine group was found in previous studies describing bacterial communities in different environments of the Adriatic Sea with no clear association with increased autotrophic biomass [@Korlevic2015; @Korlevic2016]. Observed variations in spring communities between different areas could be explained by differences in structure and supply of phototroph-derived organic matter. The summer community was characterized by the family *Balneolaceae* and the NS11-12 marine group from the *Bacteroidota*, the SAR11 subclades II and III, HIMB11 and the AEGEAN-169 marine group from the *Alphaproteobacteria* and from the *Gammaproteobacteria* the OM60 (NOR5) clade and *Litoricola*. In contrast, the winter community was characterized by the archaeal "*Candidatus* Nitrosopumilus" and Marine group II, the alphaproteobacterial SAR11 subclade Ia and the gammaproteobacterial SUP05 cluster. Temporal and depth-related variation of different SAR11 subclades was also reported previously although in our data a different pattern could be observed in comparison to other surface associated SAR11 communities [@Carlson2009; @Vergin2013; @Salter2015]. In example, the higher contribution of the SAR11 subclade Ia to the community in winter. Higher contribution of members in the summer community such as the HIMB11, the OM60 (NOR5) clade and *Litoricola* could result from their adaptation to more oligotrophic conditions during water column stratification in summer through the ability to use alternative methods of energy supply (i.e. bacteriochlorphyll *a* and proteorhodopsin) [@Huggett2012; @Spring2013a; @Durham2014]. Furthermore, higher contribution of the AEGEAN-169 marine group to the summer community in our samples could be explained by the hypothesised adaptation of this group to ultraoligotrophic waters and high solar irradiance [@Reintjes2019]. The co-occurrence of "*Candidatus* Nitrosopumilus" and the Marine group II in winter samples is interesting. A study describing a strong co-dominance of these two groups suggested that nitrification by ammonia-oxidising archaea is coupled with ammonification performed by the members of the Marine group II [@Kim2019]. In addition, the presence of "*Candidatus* Nitrosopumilus" reads in our samples is not surprising as recently two new strains of ammonia-oxidising archaea within the genus *Nitrosopumilus* have been isolated from northern Adriatic coastal waters [@Bayer2019].
+
+Beside these groups that showed specificity to one of the identified temporal communities taxonomic analysis revealed taxa present through the year, such as the cyanobacterial *Synechococcus*, the flavobacterial NS5 marine group and *Cryomorphaceae* and the gammaproteobacterial SAR86 clade. The dominance of *Synechococcus* over other cyanobacterial groups in this coastal area was reported previously, so it not surprising that we also observed a strong dominance of *Synechococcus* related sequences [@Silovic2012; @Tinta2015]. The known genome versatility of *Synechococcus* could explain the high contribution of this genus to the cyanobacterial community in fluctuating coastal environments [@Palenik2003]. The *Cryomorphaceae* were associated with organic matter remineralisation processes [@Bowman2014], while a single-cell genome analysis of the NS5 marine group revealed the ability to degrade marine polysaccharides. In addition, the NS5 marine group was previously detected in different seasons and environments of the Adriatic Sea [@Korlevic2015; @Korlevic2016]. It seems that members of these two groups are part of a basic remineralisation community present at this location throughout the year. The gammaproteobacterial SAR86 clade, previously reported in different environments of the Adriatic Sea [@Korlevic2015; @Korlevic2016; @Tinta2015], was also detected throughout the year. Recent analysis of metagenomic data suggested the existence of different functional and ecological ecotypes of this ubiquitous clade [@Hoarfrost2020]. It is possible that different ecotypes are also characteristic for different seasons.
+
+In conclusion, prokaryotic communities inhabiting the proximity of the shore exhibit temporal variations similar to surface water assemblages in other temperate areas. As in other areas a richness maximum was recorded in the colder period of the year, the exchange of multiple community states during the year was observed and temperature was identified as the main force driving temporal community change [@Gilbert2012; @Ladau2013; @El-Swais2015; @Lindh2015; @Ward2017; @Mestre2020]. Beside these similarities, temporal analysis of taxonomic data identified season-specific community structures and groups exhibiting temporal patterns different from other areas indicating that beside global driving factors local conditions also influence the coastal prokaryotic community.
+
+## Acknowledgments
+This study was funded by the Croatian Science Foundation through the MICRO-SEAGRASS project (project number IP-2016-06-7118). GJH was supported by the Austrian Science Fund (FWF) through the ARTEMIS project (project number P28781-B21). We would like to thank the University Computing Center of the University of Zagreb for access to the computer cluster Isabella, Margareta Buterer for technical support and Paolo Paliaga for help during sampling.
+
+\newpage
+## References
+\interlinepenalty=10000
+\setlength{\emergencystretch}{8.5em}
+<div id="refs"></div>
+
+\newpage 
+\setlength\parindent{0pt}
+
+## Figure legends
+**\autoref{pcoa_dbrda}.** \nameref{pcoa_dbrda}
+
+**\autoref{community}.** \nameref{community}
+
+**\autoref{cyano}.** \nameref{cyano}
+
+**\autoref{bactero}.** \nameref{bactero}
+
+**\autoref{alpha}.** \nameref{alpha}
+
+**\autoref{gamma}.** \nameref{gamma}
+
+\newpage
+\blandscape
+## Figures
+```{r out.width="100%", fig.align="center", fig.cap="(A) Principal Coordinates Analysis (PCoA) of Bray-Curtis distances based on OTU abundances of bacterial and archaeal communities sampled in Saline and Funtana Bay. The proportion of explained variation by each axis is shown on the corresponding axis in parentheses. (B) Distance-Based Redundancy Analysis (db-RDA) of Bray-Curtis distances based on the same community data sampled at the same locations and constrained by a set of environmental parameters (T -- temperature, S -- salinity, \\ch{PO4^3-} -- orthophosphate, \\ch{NH4^+} -- ammonium, \\ch{NO2-} -- nitrite, \\ch{NO3-} -- nitrate, \\ch{SiO4^4-} -- orthosilicate, PM -- particulate matter, Chl \\textit{a} -- chlorophyll \\textit{a} and PA -- prokaryotic abundance). Scaling type 1 was selected for the biplot. The proportion of community data variation explained by environmental variables ($R^2_a$) is stated on the biplot, while the proportion of community data variation expalined by each canonical axis is shown on the corresponding axis in parentheses. Samples in both plots originating from the same station or same season are labeled in different shape and color.\\label{pcoa_dbrda}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/pcoa_dbrda_figure.jpg"))
+```
+
+```{r out.width="85%", fig.align="center", fig.cap="Taxonomic classification and relative contribution of the most abundant ($\\geq$ 1 \\si{\\percent}) bacterial and archaeal sequences in communities sampled in Saline and Funtana Bay. No Relative -- sequences without known relatives\\label{community}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/community_bar_plot.jpg"))
+```
+
+```{r out.width="85%", fig.align="center", fig.cap="Taxonomic classification and relative contribution of the most abundant ($\\geq$ 1 \\si{\\percent}) cyanobacterial sequences in communities sampled in Saline and Funtana Bay. The proportion of cyanobacterial sequences in the total bacterial and archaeal community is given above the corresponding bar.\\label{cyano}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/cyanobacteria_bar_plot.jpg"))
+```
+
+```{r out.width="85%", fig.align="center", fig.cap="Taxonomic classification and relative contribution of the most abundant ($\\geq$ 1 \\si{\\percent}) sequences within the \\textit{Bacteroidota} in communities sampled in Saline and Funtana Bay. The proportion of sequences classified as \\textit{Bacteroidota} in the total bacterial and archaeal community is given above the corresponding bar. NR -- No Relative (sequences without known relatives within the corresponding group)\\label{bactero}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/bacteroidota_bar_plot.jpg"))
+```
+
+```{r out.width="85%", fig.align="center", fig.cap="Taxonomic classification and relative contribution of the most abundant ($\\geq$ 2 \\si{\\percent}) alphaproteobacterial sequences in communities sampled in Saline and Funtana Bay. The proportion of alphaproteobacterial sequences in the total bacterial and archaeal community is given above the corresponding bar. NR -- No Relative (sequences without known relatives within the corresponding group)\\label{alpha}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/alphaproteobacteria_bar_plot.jpg"))
+```
+
+```{r out.width="85%", fig.align="center", fig.cap="Taxonomic classification and relative contribution of the most abundant ($\\geq$ 1 \\si{\\percent}) gammaproteobacterial sequences in communities sampled in Saline and Funtana Bay. The proportion of gammaproteobacterial sequences in the total bacterial and archaeal community is given above the corresponding bar. NR -- No Relative (sequences without known relatives within the corresponding group)\\label{gamma}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/gammaproteobacteria_bar_plot.jpg"))
+
+```
+\elandscape

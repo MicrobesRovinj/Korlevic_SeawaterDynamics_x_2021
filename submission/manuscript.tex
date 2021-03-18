@@ -1,0 +1,1128 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Prokaryotic community temporal variation in a coastal marine environment},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{times} % Times New Roman font
+\usepackage[T1]{fontenc}
+
+\usepackage[none]{hyphenat}
+
+\usepackage{setspace}
+\doublespacing
+\setlength{\parskip}{1em}
+
+\usepackage{lineno}
+\renewcommand{\linenumberfont}{\normalfont\tiny}
+
+\usepackage{pdfpages}
+
+\usepackage{indentfirst}
+
+\usepackage[labelsep=period, labelfont=bf]{caption}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\figurename}{Fig.}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+
+\usepackage{pdflscape}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+
+\usepackage{siunitx}
+\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
+\DeclareSIUnit\Molar{\textsc{m}}
+\DeclareSIUnit\cells{\text{cells}}
+
+\usepackage{caption}
+\captionsetup{justification=justified}
+
+\usepackage{float}
+
+\usepackage{xr}
+\externaldocument[supp-]{supplementary}
+
+\usepackage{txfonts}
+
+\renewcommand{\figureautorefname}{Fig.}
+
+\usepackage{microtype}
+
+\usepackage{chemformula}
+
+\title{\textbf{Prokaryotic community temporal variation in a coastal marine
+environment}}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\vspace{20mm}
+
+Marino Korlević\textsuperscript{1\(*\)}, Marsej
+Markovski\textsuperscript{1}, Gerhard J. Herndl\textsuperscript{2,3} and
+Mirjana Najdek\textsuperscript{1}
+
+1. Center for Marine Research, Ruđer Bošković Institute, Croatia
+
+2. Department of Functional and Evolutionary Ecology, University of
+Vienna, Austria
+
+3. NIOZ, Department of Marine Microbiology and Biogeochemistry, Royal
+Netherlands Institute for Sea Research, Utrecht University, The
+Netherlands
+
+\textsuperscript{\(*\)}To whom correspondence should be addressed:
+
+Marino Korlević
+
+G. Paliaga 5, 52210 Rovinj, Croatia
+
+Tel.: +385 52 804 768
+
+Fax: +385 52 804 780
+
+e-mail:
+\href{mailto:marino.korlevic@irb.hr}{\nolinkurl{marino.korlevic@irb.hr}}
+
+Running title: Temporal variation of a coastal prokaryotic community
+
+\newpage
+\linenumbers
+\sisetup{mode=text}
+\setlength\parindent{24pt}
+
+\hypertarget{abstract}{%
+\subsection{Abstract}\label{abstract}}
+
+Prokaryotic communities inhabiting surface waters of temperate areas
+exhibit patterns of seasonal succession. Studies describing these
+temporal changes were mainly not performed at stations located in the
+proximity of the coast. The temporal variation of these communities was
+determined in the northern Adriatic Sea surface waters sampled at two
+stations located in the close proximity of its western shore. Sequencing
+of the V4 region of the 16S rRNA gene identified a community richness
+maximum in December and a temporal exchange of a spring, summer and
+autumn/winter-specific community. Temperature was shown to be the main
+environmental force explaining community temporal variation. Taxonomic
+analysis determined low-level taxa present throughout the year and
+groups specific to each identified temporal community. The
+\emph{Synechococcus}, SAR86 clade, NS5 marine group and
+\emph{Cryomorphaceae} were detected through the year. In contrast, the
+spring community was characterized by the NS4 marine group,
+\emph{Formosa} and \emph{Rhodobacteraceae}, the summer community by
+SAR11 subclades II and III, HIMB11, AEGEAN-169 marine group, OM60 (NOR5)
+clade and \emph{Litoricola} and the autumn/winter community by SAR11
+subclade Ia and \emph{Archaea}. Taken together, prokaryotic communities
+inhabiting coastal surface waters exhibit general phenomena similar to
+other surface associated assemblages, but are also characterized by
+season-specific community structures and temporal patterns of certain
+taxonomic groups that differ from other areas.
+
+\newpage
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+Prokaryotic picoplankton communities inhabiting marine surface waters
+exhibit patterns of seasonal succession. These temporal community
+changes were described for surface waters of polar, temperate and
+(sub)tropical regions (Bunse and Pinhassi, 2017). In temperate regions
+changes were mainly associated with summer water column stratification,
+winter mixing and spring phytoplankton blooms (Teeling et al., 2012;
+Bunse and Pinhassi, 2017; Mestre et al., 2020). Although general
+successional patterns in these waters were reported, some local
+differences were also observed. While some studies have reported the
+exchange of multiple community states during the year (Gilbert et al.,
+2009; Sintes et al., 2013; El‐Swais et al., 2015; Lindh et al., 2015),
+others have observed a community separation in only two major groups
+(Mestre et al., 2020), indicating that beside global patterns local
+environmental conditions may influence seasonal community change.
+
+Seasonal community variation in temperate waters usually starts with
+assemblages characteristic for spring phytoplankton blooms. The
+successional pattern of different microbial groups during the pre-bloom,
+bloom and bloom-decay periods have been described in detail (Teeling et
+al., 2012, 2016; Sintes et al., 2013). The pre-bloom community is
+generally dominated by members of the alphaproteobacterial SAR11 clade,
+during the bloom \emph{Bacteroidota} taxa such as \emph{Formosa},
+\emph{Polaribacter}, \emph{Ulvibacter} and the VIS6 clade become
+abundant while the decay period is characterized by
+\emph{Gammaproteobacteria}, i.e.~the SAR92 clade (Teeling et al., 2012,
+2016; Sintes et al., 2013). Beside taxa co-occurring with phytoplankton
+blooms, communities specific to summer water stratification and winter
+mixing were also described (Mestre et al., 2020). Usually,
+\emph{Cyanobacteria} are enriched during summer periods, while the SAR11
+clade exhibit an interesting trend with some sub-clades being
+characteristic for summer and some for winter months (Salter et al.,
+2015; Mestre et al., 2020).
+
+The majority of studies describing temporal changes in temperate areas
+were performed at long-term time series locations, such as the L4
+sampling site of the Western Channel Observatory (Gilbert et al., 2009,
+2012), Blanes Bay Microbial Observatory (BBMO) (Alonso-Sáez et al.,
+2007; Mestre et al., 2020), Linnaeus Microbial Observatory (Lindh et
+al., 2015), station Kabeltonne in the German Bight (Teeling et al.,
+2012, 2016) and station E2 of the RADIALES time-series project
+(Alonso‐Sáez et al., 2015). Data obtained from such time-series studies
+have found that a set of abiotic and biotic factors drive the temporal
+community variation (Bunse and Pinhassi, 2017). It was suggested that
+biological interactions primarily affect microbial dynamics over shorter
+time periods of days to weeks, while physicochemical parameters are
+mainly responsible for observed seasonal successional patterns (Gilbert
+et al., 2009; Fuhrman et al., 2015; Needham and Fuhrman, 2016; Bunse and
+Pinhassi, 2017; Mestre et al., 2020). In addition, several studies
+indicate that the phytoplankton derived dissolved organic matter (DOM)
+indirectly drives community dynamics (Teeling et al., 2012, 2016; Lindh
+et al., 2015; Needham and Fuhrman, 2016; Bunse and Pinhassi, 2017). It
+is therefore worth investigating if such general such general
+interactions also apply to coastal microbial communities inhabiting the
+proximity of the shore.
+
+To describe the temporal variation of microbial communities in
+ecosystems located in the proximity of the shore and to disentangle the
+environmental variables responsible for their temporal change it is
+important to apply a high-frequency sampling approach. In order to
+determine the temporal variation of prokaryotic picoplankton communities
+in these habitats monthly sampling of surface waters at two stations
+along the western coast of the northern Adriatic Sea was performed. In
+addition, to assess the main environmental parameters associated with
+community changes compositional data were constrained by a set of
+previously reported environmental parameters measured at the same time
+(Najdek et al., 2020a, 2020b).
+
+\newpage
+
+\hypertarget{materials-and-methods}{%
+\subsection{Materials and methods}\label{materials-and-methods}}
+
+\hypertarget{sampling}{%
+\subsubsection{Sampling}\label{sampling}}
+
+Surface seawater from the northern Adriatic Sea was collected in the
+proximity of the coast (25 -- 50 \si{m}) in two closely located bays
+(\textasciitilde7 km apart), Saline (\ang{45;7;5} N, \ang{13;37;20} E)
+and Funtana (\ang{45;10;39} N, \ang{13;35;42} E), by diving (depth,
+\textasciitilde1.5 \si {m}) in 10 \si{l} containers and transported to
+the laboratory where 10 -- 20 \si{l} were filtered through a 20 \si{\um}
+mesh net. The filtrate was further sequentially filtered using a
+peristaltic pump through 3 \si{\um} and 0.2 \si{\um} polycarbonate
+membrane filters (Whatman, United Kingdom). Filters were dried briefly
+at room temperature and stored at \num{-80} \si{\degreeCelsius}. Samples
+were collected monthly from July 2017 to October 2018. At the same time
+when samples for picoplankton community structure assessment were
+collected additional samples were retrieved to determined a set of
+environmental parameters as reported previously (Najdek et al., 2020a,
+2020b).
+
+\hypertarget{dna-isolation}{%
+\subsubsection{DNA isolation}\label{dna-isolation}}
+
+Picoplankton DNA was isolated from 0.2 \si{\um} polycarbonate filters
+according to Massana et al. (1997) with slight modifications. Following
+phenol-chloroform extractions, 1/10 of 3 \si{\Molar} chilled sodium
+acetate (pH 5.2) was added. DNA was precipitated by the addition of 1
+volume of chilled isopropanol, incubating the mixtures overnight at
+\num{-20} \si{\degreeCelsius} and centrifuging at 20,000 × \emph{g} and
+4 \si{\degreeCelsius} for 21 \si{\minute}. Pellets were washed twice
+with 500 \si{\ul} of 70 \si{\percent} chilled ethanol and centrifuged
+after each washing step at 20,000 × \emph{g} and 4 \si{\degreeCelsius}
+for 5 \si{\minute}. Air-dried pellets were re-suspended in 50 \si{\ul}
+of deionized water.
+
+\hypertarget{illumina-16s-rrna-sequencing}{%
+\subsubsection{Illumina 16S rRNA
+sequencing}\label{illumina-16s-rrna-sequencing}}
+
+The V4 region of the gene for 16S rRNA was sequenced using the Illumina
+MiSeq platform as described previously (Korlević et al., submitted). A
+two-step PCR procedure was applied to amplify the target region. In the
+first PCR, primers 515F (\(5'\)-GTGYCAGCMGCCGCGGTAA-\(3'\)) and 806R
+(\(5'\)-GGACTACNVGGGTWTCTAAT-\(3'\)) from the Earth Microbiome Project
+(\url{https://earthmicrobiome.org/protocols-and-standards/16s/}) were
+used (Caporaso et al., 2012; Apprill et al., 2015; Parada et al., 2016).
+A tagged sequence was added to these primers on their \(5'\) end. PCR
+products were purified and sent for Illumina MiSeq sequencing at IMGM
+Laboratories, Martinsried, Germany. Prior to sequencing at IMGM, adapter
+and sample-specific index sequences were incorporated during the second
+PCR amplification of the two-step PCR procedure using primers targeting
+the tagged region. Beside samples, a positive and negative control were
+included in each sequencing batch. For a positive control a mock
+community consisting of evenly mixed DNA material originating from 20
+bacterial strains (ATCC MSA-1002, ATCC, USA) was used, while the
+negative control comprised PCR reactions without DNA template. Reads
+obtained in this study (Bay of Saline) were combined with reads
+previously reported in a study describing temporal dynamics of surface
+associated microbial communities (Bay of Funtana) (Korlević et al.,
+submitted) and analysed together. Sequences processed in this study have
+been deposited in the European Nucleotide Archive (ENA) at EMBL-EBI
+under accession numbers SAMEA6648771 -- SAMEA6648788, SAMEA6648824,
+SAMEA6648825, SAMEA8117500 -- SAMEA8117516.
+
+\hypertarget{sequence-analysis}{%
+\subsubsection{Sequence analysis}\label{sequence-analysis}}
+
+Sequences obtained in the present study were analysed using mothur
+(version 1.43.0) (Schloss et al., 2009) according to the MiSeq Standard
+Operating Procedure (MiSeq SOP; \url{https://mothur.org/wiki/MiSeq_SOP})
+(Kozich et al., 2013) and recommendations given by the Riffomonas
+project to enhance data reproducibility
+(\url{http://www.riffomonas.org/}). Computing was performed on the
+computer cluster Isabella (University Computing Center, University of
+Zagreb). Alignment and classification was performed using the SILVA SSU
+Ref NR 99 database (release 138; \url{http://www.arb-silva.de}) (Quast
+et al., 2013; Yilmaz et al., 2014). Pipeline data processing and
+visualisation was done using R (version 3.6.0) (R Core Team, 2019) in
+combination with packages vegan (version 2.5.6) (Oksanen et al., 2019),
+tidyverse (version 1.2.1) (Wickham, 2017; Wickham et al., 2019) and
+multiple other packages (Neuwirth, 2014; Xie, 2014, 2015, 2019a, 2019b,
+2019c; Xie et al., 2018; Allaire et al., 2019; McKinnon Edwards, 2019;
+Wilke, 2019; Zhu, 2019). The detailed analysis procedure including the
+RMarkdown file are available in the GitHub repository (\textbf{TO BE
+ADDED}). The average sequencing error rate of 0.01 \si{\percent} was
+calculated based on the ATCC MSA-1002 mock community included in each
+sequencing batch, which is in line with previously reported values for
+next-generation 16S rRNA amplicon sequencing (Kozich et al., 2013;
+Schloss et al., 2016). Also, negative controls processed together with
+the samples yielded on average only 2 sequences after quality curation.
+
+\newpage
+
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
+
+Sequencing of 17 samples from the Bay of Saline and 18 samples from the
+Bay of Funtana (one of the samples was a sequencing replicate) yielded
+1.6 million reads after quality curation and exclusion of sequences
+without known relatives (no relative sequences), eukaryotic, chloroplast
+and mitochondrial sequences (\autoref{supp-nseq_notus}). The number of
+reads per sample ranged from 25,366 to 77,466
+(\autoref{supp-rarefaction} and \autoref{supp-nseq_notus}). Reads were
+clustered into 16,656 different OTUs at a similarity level of 97
+\si{\percent}. To account for different sequencing depth reads were
+normalized to the minimum number of sequences per sample (25,366,
+\autoref{supp-nseq_notus}) that resulted in 13,501 different OTUs
+ranging from 598 to 1,825 OTUs per sample (\autoref{supp-calculators}).
+
+Temporal variations in richness and diversity were determined by
+calculating the observed number of OTUs, Chao1, ACE, Exponential Shannon
+and Inverse Simpson (Jost, 2006). Similar trends in richness and
+diversity were observed at both stations (\autoref{supp-calculators})
+characterized by a December 2017 richness maximum both in the Saline
+(Number of OTUs, 1,777 OTUs) and Funtana (Number of OTUs, 1,825 OTUs)
+Bay. Interestingly, the Inverse Simpson index did not show an elevated
+value in December 2017 as the Exponential Shannon index indicating that
+rare OTUs contributed substantially to the observed richness maxima. To
+determine temporal changes in the proportion of shared OTUs and
+communities the Jaccard's and Bray-Curtis similarity coefficients were
+calculated between consecutive sampling points (\autoref{supp-shared}).
+Similar trends were observed at both stations with higher stability of
+shared bacterial and archaeal OTUs (Jaccard's similarity coefficient)
+than shared communities (Bray-Curtis similarity coefficient). In
+addition, a stronger drop in shared communities between March and April
+2018 was observed at both stations indicating a more pronounced
+community shift in this period (\autoref{supp-shared}). Analysis of this
+time series data showed that only 0.3 \si{\percent} of OTUs were present
+throughout the study period while these persistent OTUs contributed to
+61.8 \si{\percent} of sequences.
+
+To evaluate the temporal variation of bacterial and archaeal communities
+Principal Coordinate Analysis (PCoA) of Bray-Curtis distances was
+applied to the OTU community data (\autoref{pcoa_dbrda}A). Communities
+specific to summer, autumn/winter and spring could be identified
+regardless of the station sampled. This separation in three specific
+communities was further supported by ANOSIM (R = 0.72, \emph{p}
+\textless{} 0.01). To assess which environmental parameter mainly
+contributes to the observed temporal community variation the community
+data was constrained by a set of previously reported environmental
+variables (Najdek et al., 2020a, 2020b) using Distance-Based Redundancy
+Analysis (db-RDA) (\autoref{pcoa_dbrda}B). Nearly half (\(R^2_a=\) 45.7
+\si{\percent}) of the observed community variation could be explained by
+the explanatory variables. Separation between summer and autumn/winter
+communities could mainly be explained by temperature, prokaryotic
+abundance, salinity and nitrite. In contrast, neither variable could
+strongly explain the separate spring community.
+
+The classification of reads showed that the prokaryotic community was
+dominated by bacterial (98.3 ± 3.5 \si{\percent}) over archaeal
+sequences (1.7 ± 3.5 \si{\percent}) (\autoref{community}). A higher
+relative contribution of archaeal reads was observed only in November
+2017 (7.5 ± 2.2 \si{\percent}), December 2017 (13.2 ± 1.4 \si{\percent})
+and February 2018 (3.7 ± 0.9 \si{\percent}). The main taxonomic group
+contributing to the higher relative abundance of \emph{Archaea} in this
+period was the \emph{Crenarchaeota} ``\emph{Candidatus} Nitrosopumilus''
+and the \emph{Thermoplasmatota} Marine group II. The bacterial community
+was comprised of well known seawater groups such as the
+\emph{Actinobacteriota}, \emph{Bacteroidota}, \emph{Cyanobacteria},
+\emph{Marinimicrobia}, \emph{Alphaproteobacteria},
+\emph{Gammaproteobacteria} and \emph{Verrucomicrobiota}
+(\autoref{community}). In addition, similar temporal patterns were
+observed at both stations.
+
+\emph{Cyanobacteria} comprised on average 5.1 ± 2.8 \si{\percent} of the
+prokaryotic community. The highest relative contribution was recorded in
+winter (8.2 ± 5.6 \si{\percent}), mainly caused by the high proportion
+in the March 2018 sample (13.0 ± 1.6 \si{\percent}). The cyanobacterial
+community was largely dominated by \emph{Synechococcus}, especially
+during periods of higher cyanobacterial presence (\autoref{cyano}).
+\emph{Bacteroidota} comprised on average 21.8 ± 6.2 \si{\percent} of the
+community. Slightly higher values were characteristic for spring and
+summer (23.9 ± 4.6 \si{\percent}) in comparison to autumn and winter
+(18.0 ± 7.1 \si{\percent}) (\autoref{community}). Although
+\emph{Bacteroidota} showed only slight temporal variations, taxa within
+this group exhibited strong seasonal patterns (\autoref{bactero}).
+Groups such as the NS5 marine group and uncultured \emph{Cryomorphaceae}
+were present throughout the year, while sequences classified as
+\emph{Balneola}, uncultured \emph{Balneolaceae} and the NS11-12 marine
+group were more pronounced from May to October. In addition,
+\emph{Formosa} and the NS4 marine group could be detected throughout the
+study period but specifically contributed to the \emph{Bacteroidota}
+community in March and April 2018, respectively. Higher values of
+chloroplast sequences were also recorded at this time
+(\autoref{supp-chloroplast}). In addition, while uncultured
+\emph{Saprospiraceae} from the Saline Bay samples contributed
+substantially to the \emph{Bacteroidota} community in June and July
+2018, this phenomenon was not as pronounced in the Funtana Bay
+(\autoref{bactero}).
+
+Sequences classified as \emph{Alphaproteobacteria} showed the highest
+relative abundance and comprised on average 38.3 ± 8.0 \si{\percent} of
+the prokaryotic community (\autoref{community}). Analysis of temporal
+alphaproteobacterial variation showed higher sequence contribution in
+summer (41.3 ± 6.3 \si{\percent}) and winter (44.0 ± 2.2 \si{\percent})
+in comparison to autumn (34.9 ± 4.9 \si{\percent}) and spring (31.1 ±
+11.5 \si{\percent}). Temporal variation of taxa within this class showed
+different patterns (\autoref{alpha}). The most pronounced community
+shift was observed in April 2018 when reads of the usually prominent
+SAR11 clade were scarce and \emph{Stappiaceae},
+\emph{Ascidiaceihabitans} and no relative \emph{Rhodobacteraceae}
+dominated the alphaproteobacterial community. Subclades within the SAR11
+clade also showed different temporal patterns. Subclades II and III
+characterized the SAR11 community in summer from June to September,
+while from November to March reads classified as subclade Ia comprised
+the majority of SAR11 specific sequences. Except by the SAR11 subclades
+II and III, summer months were also characterized by two other
+alphaproteobacterial groups, the HIMB11 and the AEGEAN-169 marine group
+(\autoref{alpha}).
+
+Reads classified as \emph{Gammaproteobacteria} comprised on average 21.6
+± 6.6 \si{\percent} of the prokaryotic community (\autoref{community}).
+The season characterized by the highest relative contribution of
+gammaproteobacterial sequences was spring (29.9 ± 12.3 \si{\percent}),
+while in other periods values ranged form 18.9 ± 2.6 to 22.3 ± 2.5
+\si{\percent}. Temporal variation analysis of taxa within
+\emph{Gammaproteobacteria} showed groups present throughout the year,
+such as the SAR86 clade, but also season specific taxa, such as
+\emph{Litoricola}, OM60 (NOR5) clade and SUP05 cluster
+(\autoref{gamma}). \emph{Litoricola} and the OM60 (NOR5) clade
+characterized the gammaproteobacterial community from April to August,
+while sequences specific for the SUP05 cluster were detected from
+November to March. Taxonomic groups of high level bacterial taxa that
+comprised a lower proportion of prokaryotic sequences such as the
+\emph{Actinobacteriota} and \emph{Verrucomicrobiota} also showed
+temporal variations. During the period of higher relative sequence
+abundance of \emph{Actinobacteriota}, in the time span between September
+and December, the actinobacterial community was comprised mainly of the
+``\emph{Candidatus} Actinomarina''. Similarly, in April and May when
+\emph{Verrucomicrobiota} specific reads were at their maximal relative
+abundance \emph{Lentimonas} and \emph{Coraliomargarita} were the main
+constituent of the \emph{Verrucomicrobiota} specific community.
+
+\newpage
+
+\hypertarget{discussion}{%
+\subsection{Discussion}\label{discussion}}
+
+Prokaryotic communities inhabiting surface waters of temporal areas
+exhibit patterns of seasonal succession (Bunse and Pinhassi, 2017).
+These temporal variations were mainly studied at long-term time series
+sites which usually encompass only one sampling station located further
+away from the coast (Gilbert et al., 2009; Mestre et al., 2020). In the
+present study temporal variation of surface prokaryotic communities was
+determined in the close proximity of the shore. Drawn conclusions were
+further strengthen by the analysis of time series data at two closely
+located stations. Similar patterns were observed at both sites
+indicating that determined phenomena could also be characteristic for
+prokaryotic communities inhabiting surface waters of a wider area.
+
+Temporal changes in richness were substantial as indicated by the
+proportion of OTUs present at every sampling point (0.3 \si{\percent}).
+Sequences clustered into these persistent OTUs comprised a high
+proportion of reads (61.8 \si{\percent}). Similar proportions of
+persistent core OTUs and their contribution to the total number of
+sequences were also reported in other time series studies (Gilbert et
+al., 2009, 2012). Analysis of temporal variations in alpha diversity
+showed maximal richness values in December. This observed event is in
+line with previously reported richness maxima in other areas during
+colder months (Gilbert et al., 2012; Ladau et al., 2013; El‐Swais et
+al., 2015; Mestre et al., 2020). It has been suggested that late
+autumn/winter overturn is responsible for this phenomenon by simply
+mixing population from deeper parts of the water column with existing
+ones (García et al., 2015; Salter et al., 2015; Bunse and Pinhassi,
+2017). Although the samples in this study were retrieved at very shallow
+locations, water column mixing taking place at deeper areas could bring
+additional taxa to these locations causing the observed increase in
+alpha diversity.
+
+The majority of studies analysing temporal community variation usually
+identified an exchange of multiple community states during the year
+(El‐Swais et al., 2015; Lindh et al., 2015). In contrast, some studies
+described only a switch between winter and summer specific assemblages
+(Ward et al., 2017; Mestre et al., 2020). It is possible that these
+differences are a consequence of local conditions. Indeed, some studies
+attributed the observed lower number of states to the absence of large
+spring and fall phytoplankton blooms in some areas (Ward et al., 2017).
+Analysis of OTU community data from our samples identified three
+separate microbial assemblages characteristic for spring, summer and
+autumn/winter. This is in line with studies describing the exchange of
+multiple states during the year with a separate spring community
+assemblage (El‐Swais et al., 2015; Lindh et al., 2015). We hypothesize
+that the separate spring community is a late response to a phytoplankton
+bloom that can occur in this area (Mozetič et al., 2010; Manna et al.,
+2021). Temperature and prokaryotic abundance were identified as the main
+factors influencing the exchange of communities between the summer and
+autumn/winter period. It is not surprising that temperature and
+prokaryotic abundance are similar in explaining this shift as higher
+prokaryotic abundances were reported in this area during summer months
+(Ivančić et al., 2010). The identification of temperature as the single
+most important driver of community change is in line with previously
+reported data (El‐Swais et al., 2015; Ward et al., 2017; Mestre et al.,
+2020). It was proposed that temperature indirectly influences community
+change through phytoplankton nutrient limitation during water column
+stratification and nutrient input in times of water column mixing (Bunse
+and Pinhassi, 2017). Factors explaining the onset of a separate spring
+community were not identified. We hypothesise that based on a slightly
+higher value of chloroplast specific reads in these samples and the
+presence of taxa specific for phytoplankton blooms this community was a
+late prokaryotic response to a phytoplankton bloom even though the
+concentration of chlorophyll \emph{a} could not explain it.
+
+Differences between communities specific for spring, summer and
+autumn/winter observed at the level of OTUs could also be seen in the
+taxonomic composition. The identified spring-specific community
+contained taxa previously associated with phytoplankton blooms (Teeling
+et al., 2012, 2016; Sintes et al., 2013). \emph{Formosa} and members
+within the \emph{Rhodobacteraceae} were associated with phytoplankton
+blooms in the North Sea (Teeling et al., 2012, 2016), while the NS4
+marine group was found in previous studies describing bacterial
+communities in different environments of the Adriatic Sea with no clear
+association with increased autotrophic biomass (Korlević et al., 2015,
+2016). Observed variations in spring communities between different areas
+could be explained by differences in structure and supply of
+phototroph-derived organic matter. The summer community was
+characterized by the family \emph{Balneolaceae} and the NS11-12 marine
+group from the \emph{Bacteroidota}, the SAR11 subclades II and III,
+HIMB11 and the AEGEAN-169 marine group from the
+\emph{Alphaproteobacteria} and from the \emph{Gammaproteobacteria} the
+OM60 (NOR5) clade and \emph{Litoricola}. In contrast, the winter
+community was characterized by the archaeal ``\emph{Candidatus}
+Nitrosopumilus'' and Marine group II, the alphaproteobacterial SAR11
+subclade Ia and the gammaproteobacterial SUP05 cluster. Temporal and
+depth-related variation of different SAR11 subclades was also reported
+previously although in our data a different pattern could be observed in
+comparison to other surface associated SAR11 communities (Carlson et
+al., 2009; Vergin et al., 2013; Salter et al., 2015). In example, the
+higher contribution of the SAR11 subclade Ia to the community in winter.
+Higher contribution of members in the summer community such as the
+HIMB11, the OM60 (NOR5) clade and \emph{Litoricola} could result from
+their adaptation to more oligotrophic conditions during water column
+stratification in summer through the ability to use alternative methods
+of energy supply (i.e.~bacteriochlorphyll \emph{a} and proteorhodopsin)
+(Huggett and Rappe, 2012; Spring and Riedel, 2013; Durham et al., 2014).
+Furthermore, higher contribution of the AEGEAN-169 marine group to the
+summer community in our samples could be explained by the hypothesised
+adaptation of this group to ultraoligotrophic waters and high solar
+irradiance (Reintjes et al., 2019). The co-occurrence of
+``\emph{Candidatus} Nitrosopumilus'' and the Marine group II in winter
+samples is interesting. A study describing a strong co-dominance of
+these two groups suggested that nitrification by ammonia-oxidising
+archaea is coupled with ammonification performed by the members of the
+Marine group II (Kim et al., 2019). In addition, the presence of
+``\emph{Candidatus} Nitrosopumilus'' reads in our samples is not
+surprising as recently two new strains of ammonia-oxidising archaea
+within the genus \emph{Nitrosopumilus} have been isolated from northern
+Adriatic coastal waters (Bayer et al., 2019).
+
+Beside these groups that showed specificity to one of the identified
+temporal communities taxonomic analysis revealed taxa present through
+the year, such as the cyanobacterial \emph{Synechococcus}, the
+flavobacterial NS5 marine group and \emph{Cryomorphaceae} and the
+gammaproteobacterial SAR86 clade. The dominance of \emph{Synechococcus}
+over other cyanobacterial groups in this coastal area was reported
+previously, so it not surprising that we also observed a strong
+dominance of \emph{Synechococcus} related sequences (Šilović et al.,
+2012; Tinta et al., 2015). The known genome versatility of
+\emph{Synechococcus} could explain the high contribution of this genus
+to the cyanobacterial community in fluctuating coastal environments
+(Palenik et al., 2003). The \emph{Cryomorphaceae} were associated with
+organic matter remineralisation processes (Bowman, 2014), while a
+single-cell genome analysis of the NS5 marine group revealed the ability
+to degrade marine polysaccharides. In addition, the NS5 marine group was
+previously detected in different seasons and environments of the
+Adriatic Sea (Korlević et al., 2015, 2016). It seems that members of
+these two groups are part of a basic remineralisation community present
+at this location throughout the year. The gammaproteobacterial SAR86
+clade, previously reported in different environments of the Adriatic Sea
+(Korlević et al., 2015, 2016; Tinta et al., 2015), was also detected
+throughout the year. Recent analysis of metagenomic data suggested the
+existence of different functional and ecological ecotypes of this
+ubiquitous clade (Hoarfrost et al., 2020). It is possible that different
+ecotypes are also characteristic for different seasons.
+
+In conclusion, prokaryotic communities inhabiting the proximity of the
+shore exhibit temporal variations similar to surface water assemblages
+in other temperate areas. As in other areas a richness maximum was
+recorded in the colder period of the year, the exchange of multiple
+community states during the year was observed and temperature was
+identified as the main force driving temporal community change (Gilbert
+et al., 2012; Ladau et al., 2013; El‐Swais et al., 2015; Lindh et al.,
+2015; Ward et al., 2017; Mestre et al., 2020). Beside these
+similarities, temporal analysis of taxonomic data identified
+season-specific community structures and groups exhibiting temporal
+patterns different from other areas indicating that beside global
+driving factors local conditions also influence the coastal prokaryotic
+community.
+
+\hypertarget{acknowledgments}{%
+\subsection{Acknowledgments}\label{acknowledgments}}
+
+This study was funded by the Croatian Science Foundation through the
+MICRO-SEAGRASS project (project number IP-2016-06-7118). GJH was
+supported by the Austrian Science Fund (FWF) through the ARTEMIS project
+(project number P28781-B21). We would like to thank the University
+Computing Center of the University of Zagreb for access to the computer
+cluster Isabella, Margareta Buterer for technical support and Paolo
+Paliaga for help during sampling.
+
+\newpage
+
+\hypertarget{references}{%
+\subsection{References}\label{references}}
+
+\interlinepenalty=10000 \setlength{\emergencystretch}{8.5em}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-Allaire2019}{}%
+Allaire, J. J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins,
+A., et al. (2019). \emph{rmarkdown: Dynamic documents for R}.
+
+\leavevmode\hypertarget{ref-Alonso-Saez2007}{}%
+Alonso-Sáez, L., Balagué, V., Sà, E. L., Sánchez, O., González, J. M.,
+Pinhassi, J., et al. (2007). Seasonality in bacterial diversity in
+north-west Mediterranean coastal waters: Assessment through clone
+libraries, fingerprinting and FISH. \emph{FEMS Microbiol. Ecol.} 60,
+98--112.
+doi:\href{https://doi.org/10.1111/j.1574-6941.2006.00276.x}{10.1111/j.1574-6941.2006.00276.x}.
+
+\leavevmode\hypertarget{ref-Alonso-Saez2015}{}%
+Alonso‐Sáez, L., Díaz‐Pérez, L., and Morán, X. A. G. (2015). The hidden
+seasonality of the rare biosphere in coastal marine bacterioplankton.
+\emph{Environ. Microbiol.} 17, 3766--3780.
+doi:\href{https://doi.org/10.1111/1462-2920.12801}{10.1111/1462-2920.12801}.
+
+\leavevmode\hypertarget{ref-Apprill2015}{}%
+Apprill, A., McNally, S., Parsons, R., and Weber, L. (2015). Minor
+revision to V4 region SSU rRNA 806R gene primer greatly increases
+detection of SAR11 bacterioplankton. \emph{Aquat. Microb. Ecol.} 75,
+129--137. doi:\href{https://doi.org/10.3354/ame01753}{10.3354/ame01753}.
+
+\leavevmode\hypertarget{ref-Bayer2019}{}%
+Bayer, B., Vojvoda, J., Reinthaler, T., Reyes, C., Pinto, M., and
+Herndl, G. J. (2019). \emph{Nitrosopumilus adriaticus} sp. nov. and
+\emph{Nitrosopumilus piranensis} sp. nov., two ammonia-oxidizing archaea
+from the Adriatic Sea and members of the class \emph{Nitrososphaeria}.
+\emph{Int J Syst Evol Microbiol} 69, 1892--1902.
+doi:\href{https://doi.org/10.1099/ijsem.0.003360}{10.1099/ijsem.0.003360}.
+
+\leavevmode\hypertarget{ref-Bowman2014}{}%
+Bowman, J. P. (2014). ``The family \emph{Cryomorphaceae},'' in \emph{The
+Prokaryotes: Other Major Lineages of Bacteria and the Archaea}, eds. E.
+Rosenberg, E. F. DeLong, S. Lory, E. Stackebrandt, and F. Thompson
+(Berlin, Heidelberg: Springer-Verlag), 539--550.
+doi:\href{https://doi.org/10.1007/978-3-642-38954-2_135}{10.1007/978-3-642-38954-2\_135}.
+
+\leavevmode\hypertarget{ref-Bunse2017}{}%
+Bunse, C., and Pinhassi, J. (2017). Marine bacterioplankton seasonal
+succession dynamics. \emph{Trends in Microbiology} 25, 494--505.
+doi:\href{https://doi.org/10.1016/j.tim.2016.12.013}{10.1016/j.tim.2016.12.013}.
+
+\leavevmode\hypertarget{ref-Caporaso2012}{}%
+Caporaso, J. G., Lauber, C. L., Walters, W. A., Berg-Lyons, D., Huntley,
+J., Fierer, N., et al. (2012). Ultra-high-throughput microbial community
+analysis on the Illumina HiSeq and MiSeq platforms. \emph{ISME J.} 6,
+1621--1624.
+doi:\href{https://doi.org/10.1038/ismej.2012.8}{10.1038/ismej.2012.8}.
+
+\leavevmode\hypertarget{ref-Carlson2009}{}%
+Carlson, C. A., Morris, R., Parsons, R., Treusch, A. H., Giovannoni, S.
+J., and Vergin, K. (2009). Seasonal dynamics of SAR11 populations in the
+euphotic and mesopelagic zones of the northwestern Sargasso Sea.
+\emph{ISME J.} 3, 283--295.
+doi:\href{https://doi.org/10.1038/ismej.2008.117}{10.1038/ismej.2008.117}.
+
+\leavevmode\hypertarget{ref-Durham2014}{}%
+Durham, B. P., Grote, J., Whittaker, K. A., Bender, S. J., Luo, H.,
+Grim, S. L., et al. (2014). Draft genome sequence of marine
+alphaproteobacterial strain HIMB11, the first cultivated representative
+of a unique lineage within the \emph{Roseobacter} clade possessing an
+unusually small genome. \emph{Stand Genomic Sci} 9, 632--645.
+doi:\href{https://doi.org/10.4056/sigs.4998989}{10.4056/sigs.4998989}.
+
+\leavevmode\hypertarget{ref-El-Swais2015}{}%
+El‐Swais, H., Dunn, K. A., Bielawski, J. P., Li, W. K. W., and Walsh, D.
+A. (2015). Seasonal assemblages and short-lived blooms in coastal
+north-west Atlantic Ocean bacterioplankton. \emph{Environ. Microbiol.}
+17, 3642--3661.
+doi:\href{https://doi.org/10.1111/1462-2920.12629}{10.1111/1462-2920.12629}.
+
+\leavevmode\hypertarget{ref-Fuhrman2015}{}%
+Fuhrman, J. A., Cram, J. A., and Needham, D. M. (2015). Marine microbial
+community dynamics and their ecological interpretation. \emph{Nat. Rev.
+Microbiol.} 13, 133--146.
+doi:\href{https://doi.org/10.1038/nrmicro3417}{10.1038/nrmicro3417}.
+
+\leavevmode\hypertarget{ref-Garcia2015}{}%
+García, F. C., Alonso‐Sáez, L., Morán, X. A. G., and López‐Urrutia, Á.
+(2015). Seasonality in molecular and cytometric diversity of marine
+bacterioplankton: The re-shuffling of bacterial taxa by vertical mixing.
+\emph{Environ. Microbiol.} 17, 4133--4142.
+doi:\href{https://doi.org/10.1111/1462-2920.12984}{10.1111/1462-2920.12984}.
+
+\leavevmode\hypertarget{ref-Gilbert2009}{}%
+Gilbert, J. A., Field, D., Swift, P., Newbold, L., Oliver, A., Smyth,
+T., et al. (2009). The seasonal structure of microbial communities in
+the Western English Channel. \emph{Environ. Microbiol.} 11, 3132--3139.
+doi:\href{https://doi.org/10.1111/j.1462-2920.2009.02017.x}{10.1111/j.1462-2920.2009.02017.x}.
+
+\leavevmode\hypertarget{ref-Gilbert2012}{}%
+Gilbert, J. A., Steele, J. A., Caporaso, J. G., Steinbrück, L., Reeder,
+J., Temperton, B., et al. (2012). Defining seasonal marine microbial
+community dynamics. \emph{ISME J.} 6, 298--308.
+doi:\href{https://doi.org/10.1038/ismej.2011.107}{10.1038/ismej.2011.107}.
+
+\leavevmode\hypertarget{ref-Hoarfrost2020}{}%
+Hoarfrost, A., Nayfach, S., Ladau, J., Yooseph, S., Arnosti, C., Dupont,
+C. L., et al. (2020). Global ecotypes in the ubiquitous marine clade
+SAR86. \emph{ISME J} 14, 178--188.
+doi:\href{https://doi.org/10.1038/s41396-019-0516-7}{10.1038/s41396-019-0516-7}.
+
+\leavevmode\hypertarget{ref-Huggett2012}{}%
+Huggett, M. J., and Rappe, M. S. (2012). Genome sequence of strain
+HIMB30, a novel member of the marine \emph{Gammaproteobacteria}.
+\emph{J. Bacteriol.} 194, 732--733.
+doi:\href{https://doi.org/10.1128/JB.06506-11}{10.1128/JB.06506-11}.
+
+\leavevmode\hypertarget{ref-Ivancic2010}{}%
+Ivančić, I., Fuks, D., Najdek, M., Blažina, M., Devescovi, M., Šilović,
+T., et al. (2010). Long-term changes in heterotrophic prokaryotes
+abundance and growth characteristics in the northern Adriatic Sea.
+\emph{J. Mar. Syst.} 82, 206--216.
+doi:\href{https://doi.org/10.1016/J.JMARSYS.2010.05.008}{10.1016/J.JMARSYS.2010.05.008}.
+
+\leavevmode\hypertarget{ref-Jost2006}{}%
+Jost, L. (2006). Entropy and diversity. \emph{Oikos} 113, 363--375.
+doi:\href{https://doi.org/10.1111/j.2006.0030-1299.14714.x}{10.1111/j.2006.0030-1299.14714.x}.
+
+\leavevmode\hypertarget{ref-Kim2019}{}%
+Kim, J.-G., Gwak, J.-H., Jung, M.-Y., An, S.-U., Hyun, J.-H., Kang, S.,
+et al. (2019). Distinct temporal dynamics of planktonic archaeal and
+bacterial assemblages in the bays of the Yellow Sea. \emph{PloS one} 14,
+e0221408.
+doi:\href{https://doi.org/10.1371/journal.pone.0221408}{10.1371/journal.pone.0221408}.
+
+\leavevmode\hypertarget{ref-Korlevica}{}%
+Korlević, M., Markovski, M., Zhao, Z., Herndl, G. J., and Najdek, M.
+Seasonal dynamics of epiphytic microbial communities on marine
+macrophyte surfaces.
+
+\leavevmode\hypertarget{ref-Korlevic}{}%
+Korlević, M., Markovski, M., Zhao, Z., Herndl, G. J., and Najdek, M.
+Selective DNA and protein isolation from marine macrophyte surfaces.
+
+\leavevmode\hypertarget{ref-Korlevic2015}{}%
+Korlević, M., Pop Ristova, P., Garić, R., Amann, R., and Orlić, S.
+(2015). Bacterial diversity in the South Adriatic Sea during a strong,
+deep winter convection year. \emph{Appl. Environ. Microbiol.} 81,
+1715--1726.
+doi:\href{https://doi.org/10.1128/AEM.03410-14}{10.1128/AEM.03410-14}.
+
+\leavevmode\hypertarget{ref-Korlevic2016}{}%
+Korlević, M., Šupraha, L., Ljubešić, Z., Henderiks, J., Ciglenečki, I.,
+Dautović, J., et al. (2016). Bacterial diversity across a highly
+stratified ecosystem: A salt-wedge Mediterranean estuary. \emph{Syst.
+Appl. Microbiol.} 39, 398--408.
+doi:\href{https://doi.org/10.1016/j.syapm.2016.06.006}{10.1016/j.syapm.2016.06.006}.
+
+\leavevmode\hypertarget{ref-Kozich2013}{}%
+Kozich, J. J., Westcott, S. L., Baxter, N. T., Highlander, S. K., and
+Schloss, P. D. (2013). Development of a dual-index sequencing strategy
+and curation pipeline for analyzing amplicon sequence data on the MiSeq
+Illumina sequencing platform. \emph{Appl. Environ. Microbiol.} 79,
+5112--5120.
+doi:\href{https://doi.org/10.1128/AEM.01043-13}{10.1128/AEM.01043-13}.
+
+\leavevmode\hypertarget{ref-Ladau2013}{}%
+Ladau, J., Sharpton, T. J., Finucane, M. M., Jospin, G., Kembel, S. W.,
+O'Dwyer, J., et al. (2013). Global marine bacterial diversity peaks at
+high latitudes in winter. \emph{ISME J.} 7, 1669--1677.
+doi:\href{https://doi.org/10.1038/ismej.2013.37}{10.1038/ismej.2013.37}.
+
+\leavevmode\hypertarget{ref-Lindh2015}{}%
+Lindh, M. V., Sjöstedt, J., Andersson, A. F., Baltar, F., Hugerth, L.
+W., Lundin, D., et al. (2015). Disentangling seasonal bacterioplankton
+population dynamics by high-frequency sampling. \emph{Environ.
+Microbiol.} 17, 2459--2476.
+doi:\href{https://doi.org/10.1111/1462-2920.12720}{10.1111/1462-2920.12720}.
+
+\leavevmode\hypertarget{ref-Manna2021}{}%
+Manna, V., De Vittor, C., Giani, M., Del Negro, P., and Celussi, M.
+(2021). Long-term patterns and drivers of microbial organic matter
+utilization in the northernmost basin of the Mediterranean Sea.
+\emph{Mar. Environ. Res.} 164, 105245.
+doi:\href{https://doi.org/10.1016/j.marenvres.2020.105245}{10.1016/j.marenvres.2020.105245}.
+
+\leavevmode\hypertarget{ref-Massana1997}{}%
+Massana, R., Murray, A. E., Preston, C. M., and DeLong, E. F. (1997).
+Vertical distribution and phylogenetic characterization of marine
+planktonic \emph{Archaea} in the Santa Barbara Channel. \emph{Appl.
+Environ. Microbiol.} 63, 50--56.
+
+\leavevmode\hypertarget{ref-McKinnonEdwards2019}{}%
+McKinnon Edwards, S. (2019). \emph{lemon: Freshing up your 'ggplot2'
+plots}.
+
+\leavevmode\hypertarget{ref-Mestre2020}{}%
+Mestre, M., Höfer, J., Sala, M. M., and Gasol, J. M. (2020). Seasonal
+variation of bacterial diversity along the marine particulate matter
+continuum. \emph{Front. Microbiol.} 11, 1590.
+doi:\href{https://doi.org/10.3389/fmicb.2020.01590}{10.3389/fmicb.2020.01590}.
+
+\leavevmode\hypertarget{ref-Mozetic2010}{}%
+Mozetič, P., Solidoro, C., Cossarini, G., Socal, G., Precali, R.,
+Francé, J., et al. (2010). Recent trends towards oligotrophication of
+the Northern Adriatic: Evidence from chlorophyll \emph{a} time series.
+\emph{Estuaries Coast} 33, 362--375.
+doi:\href{https://doi.org/10.1007/s12237-009-9191-7}{10.1007/s12237-009-9191-7}.
+
+\leavevmode\hypertarget{ref-Najdek2020}{}%
+Najdek, M., Korlević, M., Paliaga, P., Markovski, M., Ivančić, I.,
+Iveša, L., et al. (2020a). Dynamics of environmental conditions during
+the decline of a \emph{Cymodocea nodosa} meadow. \emph{Biogeosciences}
+17, 3299--3315.
+doi:\href{https://doi.org/10.5194/bg-17-3299-2020}{10.5194/bg-17-3299-2020}.
+
+\leavevmode\hypertarget{ref-Najdek2020a}{}%
+Najdek, M., Korlević, M., Paliaga, P., Markovski, M., Ivančić, I.,
+Iveša, L., et al. (2020b). Effects of the invasion of \emph{Caulerpa
+cylindracea} in a \emph{Cymodocea nodosa} meadow in the Northern
+Adriatic Sea. \emph{Front. Mar. Sci.} 7, 602055.
+doi:\href{https://doi.org/10.3389/fmars.2020.602055}{10.3389/fmars.2020.602055}.
+
+\leavevmode\hypertarget{ref-Needham2016}{}%
+Needham, D. M., and Fuhrman, J. A. (2016). Pronounced daily succession
+of phytoplankton, archaea and bacteria following a spring bloom.
+\emph{Nat. Microbiol.} 1, 1--7.
+doi:\href{https://doi.org/10.1038/nmicrobiol.2016.5}{10.1038/nmicrobiol.2016.5}.
+
+\leavevmode\hypertarget{ref-Neuwirth2014}{}%
+Neuwirth, E. (2014). \emph{RColorBrewer: ColorBrewer palettes}.
+
+\leavevmode\hypertarget{ref-Oksanen2019}{}%
+Oksanen, J., Blanchet, F. G., Friendly, M., Kindt, R., Legendre, P.,
+McGlinn, D., et al. (2019). \emph{vegan: Community ecology package}.
+
+\leavevmode\hypertarget{ref-Palenik2003}{}%
+Palenik, B., Brahamsha, B., Larimer, F. W., Land, M., Hauser, L., Chain,
+P., et al. (2003). The genome of a motile marine \emph{Synechococcus}.
+\emph{Nature} 424, 1037--1042.
+doi:\href{https://doi.org/10.1038/nature01943}{10.1038/nature01943}.
+
+\leavevmode\hypertarget{ref-Parada2016}{}%
+Parada, A. E., Needham, D. M., and Fuhrman, J. A. (2016). Every base
+matters: Assessing small subunit rRNA primers for marine microbiomes
+with mock communities, time series and global field samples.
+\emph{Environ. Microbiol.} 18, 1403--1414.
+doi:\href{https://doi.org/10.1111/1462-2920.13023}{10.1111/1462-2920.13023}.
+
+\leavevmode\hypertarget{ref-Quast2013}{}%
+Quast, C., Pruesse, E., Yilmaz, P., Gerken, J., Schweer, T., Yarza, P.,
+et al. (2013). The SILVA ribosomal RNA gene database project: Improved
+data processing and web-based tools. \emph{Nucleic Acids Res.} 41,
+D590--D596.
+doi:\href{https://doi.org/10.1093/nar/gks1219}{10.1093/nar/gks1219}.
+
+\leavevmode\hypertarget{ref-RCoreTeam2019}{}%
+R Core Team (2019). \emph{R: A language and environment for statistical
+computing}. Vienna, Austria: R Foundation for Statistical Computing.
+
+\leavevmode\hypertarget{ref-Reintjes2019}{}%
+Reintjes, G., Tegetmeyer, H. E., Bürgisser, M., Orlić, S., Tews, I.,
+Zubkov, M., et al. (2019). On-site analysis of bacterial communities of
+the ultraoligotrophic South Pacific Gyre. \emph{Appl. Environ.
+Microbiol.} 85, e00184--19.
+doi:\href{https://doi.org/10.1128/AEM.00184-19}{10.1128/AEM.00184-19}.
+
+\leavevmode\hypertarget{ref-Salter2015}{}%
+Salter, I., Galand, P. E., Fagervold, S. K., Lebaron, P., Obernosterer,
+I., Oliver, M. J., et al. (2015). Seasonal dynamics of active SAR11
+ecotypes in the oligotrophic Northwest Mediterranean Sea. \emph{ISME J.}
+9, 347--360.
+doi:\href{https://doi.org/10.1038/ismej.2014.129}{10.1038/ismej.2014.129}.
+
+\leavevmode\hypertarget{ref-Schloss2016}{}%
+Schloss, P. D., Jenior, M. L., Koumpouras, C. C., Westcott, S. L., and
+Highlander, S. K. (2016). Sequencing 16S rRNA gene fragments using the
+PacBio SMRT DNA sequencing system. \emph{PeerJ} 4, e1869.
+doi:\href{https://doi.org/10.7717/peerj.1869}{10.7717/peerj.1869}.
+
+\leavevmode\hypertarget{ref-Schloss2009}{}%
+Schloss, P. D., Westcott, S. L., Ryabin, T., Hall, J. R., Hartmann, M.,
+Hollister, E. B., et al. (2009). Introducing mothur: Open-source,
+platform-independent, community-supported software for describing and
+comparing microbial communities. \emph{Appl. Environ. Microbiol.} 75,
+7537--7541.
+doi:\href{https://doi.org/10.1128/AEM.01541-09}{10.1128/AEM.01541-09}.
+
+\leavevmode\hypertarget{ref-Sintes2013a}{}%
+Sintes, E., Witte, H., Stodderegger, K., Steiner, P., and Herndl, G. J.
+(2013). Temporal dynamics in the free-living bacterial community
+composition in the coastal North Sea. \emph{FEMS Microbiol. Ecol.} 83,
+413--424.
+doi:\href{https://doi.org/10.1111/1574-6941.12003}{10.1111/1574-6941.12003}.
+
+\leavevmode\hypertarget{ref-Spring2013a}{}%
+Spring, S., and Riedel, T. (2013). Mixotrophic growth of
+bacteriochlorophyll \emph{a}-containing members of the OM60/NOR5 clade
+of marine gammaproteobacteria is carbon-starvation independent and
+correlates with the type of carbon source and oxygen availability.
+\emph{BMC Microbiol} 13, 117.
+doi:\href{https://doi.org/10.1186/1471-2180-13-117}{10.1186/1471-2180-13-117}.
+
+\leavevmode\hypertarget{ref-Silovic2012}{}%
+Šilović, T., Balagué, V., Orlić, S., and Pedrós-Alió, C. (2012).
+Picoplankton seasonal variation and community structure in the northeast
+Adriatic coastal zone. \emph{FEMS Microbiol. Ecol.} 82, 678--691.
+doi:\href{https://doi.org/10.1111/j.1574-6941.2012.01438.x}{10.1111/j.1574-6941.2012.01438.x}.
+
+\leavevmode\hypertarget{ref-Teeling2012}{}%
+Teeling, H., Fuchs, B. M., Becher, D., Klockow, C., Gardebrecht, A.,
+Bennke, C. M., et al. (2012). Substrate-controlled succession of marine
+bacterioplankton populations induced by a phytoplankton bloom.
+\emph{Science} 336, 608--611.
+doi:\href{https://doi.org/10.1126/science.1218344}{10.1126/science.1218344}.
+
+\leavevmode\hypertarget{ref-Teeling2016}{}%
+Teeling, H., Fuchs, B. M., Bennke, C. M., Krüger, K., Chafee, M.,
+Kappelmann, L., et al. (2016). Recurring patterns in bacterioplankton
+dynamics during coastal spring algae blooms. \emph{eLife} 5, e11888.
+doi:\href{https://doi.org/10.7554/eLife.11888}{10.7554/eLife.11888}.
+
+\leavevmode\hypertarget{ref-Tinta2015}{}%
+Tinta, T., Vojvoda, J., Mozetič, P., Talaber, I., Vodopivec, M.,
+Malfatti, F., et al. (2015). Bacterial community shift is induced by
+dynamic environmental parameters in a changing coastal ecosystem
+(northern Adriatic, northeastern Mediterranean Sea) - a 2-year
+time-series study. \emph{Environ. Microbiol.} 17, 3581--3596.
+doi:\href{https://doi.org/10.1111/1462-2920.12519}{10.1111/1462-2920.12519}.
+
+\leavevmode\hypertarget{ref-Vergin2013}{}%
+Vergin, K. L., Beszteri, B., Monier, A., Cameron Thrash, J., Temperton,
+B., Treusch, A. H., et al. (2013). High-resolution SAR11 ecotype
+dynamics at the Bermuda Atlantic Time-series Study site by phylogenetic
+placement of pyrosequences. \emph{ISME J.} 7, 1322--1332.
+doi:\href{https://doi.org/10.1038/ismej.2013.32}{10.1038/ismej.2013.32}.
+
+\leavevmode\hypertarget{ref-Ward2017}{}%
+Ward, C. S., Yung, C.-M., Davis, K. M., Blinebry, S. K., Williams, T.
+C., Johnson, Z. I., et al. (2017). Annual community patterns are driven
+by seasonal switching between closely related marine bacteria.
+\emph{ISME J.} 11, 1412--1422.
+doi:\href{https://doi.org/10.1038/ismej.2017.4}{10.1038/ismej.2017.4}.
+
+\leavevmode\hypertarget{ref-Wickham2017}{}%
+Wickham, H. (2017). \emph{tidyverse: Easily install and load the
+'tidyverse'}.
+
+\leavevmode\hypertarget{ref-Wickham2019}{}%
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D.,
+François, R., et al. (2019). Welcome to the tidyverse. \emph{J. Open
+Source Softw.} 4, 1686.
+doi:\href{https://doi.org/10.21105/joss.01686}{10.21105/joss.01686}.
+
+\leavevmode\hypertarget{ref-Wilke2019}{}%
+Wilke, C. O. (2019). \emph{cowplot: Streamlined plot theme and plot
+annotations for 'ggplot2'}.
+
+\leavevmode\hypertarget{ref-Xie2014}{}%
+Xie, Y. (2014). `` knitr: A comprehensive tool for reproducible research
+in R,'' in \emph{Implementing Reproducible Computational Research}, eds.
+V. Stodden, F. Leisch, and R. D. Peng (New York: Chapman and Hall/CRC),
+3--32.
+
+\leavevmode\hypertarget{ref-Xie2015}{}%
+Xie, Y. (2015). \emph{Dynamic Documents with R and knitr}. 2nd ed. Boca
+Raton, Florida: Chapman and Hall/CRC.
+
+\leavevmode\hypertarget{ref-Xie2019}{}%
+Xie, Y. (2019a). \emph{knitr: A general-purpose package for dynamic
+report generation in R}.
+
+\leavevmode\hypertarget{ref-Xie2019a}{}%
+Xie, Y. (2019b). TinyTeX: A lightweight, cross-platform, and
+easy-to-maintain LaTeX distribution based on TeX Live. \emph{TUGboat}
+40, 30--32.
+
+\leavevmode\hypertarget{ref-Xie2019b}{}%
+Xie, Y. (2019c). \emph{tinytex: Helper functions to install and maintain
+'TeX Live', and compile 'LaTeX' documents}.
+
+\leavevmode\hypertarget{ref-Xie2018}{}%
+Xie, Y., Allaire, J. J., and Grolemund, G. (2018). \emph{R Markdown: The
+Definitive Guide}. 1st ed. Boca Raton, Florida: Chapman and Hall/CRC.
+
+\leavevmode\hypertarget{ref-Yilmaz2014}{}%
+Yilmaz, P., Parfrey, L. W., Yarza, P., Gerken, J., Pruesse, E., Quast,
+C., et al. (2014). The SILVA and "All-Species Living Tree Project (LTP)"
+taxonomic frameworks. \emph{Nucleic Acids Res.} 42, D643--D648.
+doi:\href{https://doi.org/10.1093/nar/gkt1209}{10.1093/nar/gkt1209}.
+
+\leavevmode\hypertarget{ref-Zhu2019}{}%
+Zhu, H. (2019). \emph{kableExtra: Construct complex table with 'kable'
+and pipe syntax}.
+
+\newpage 
+\setlength\parindent{0pt}
+
+\hypertarget{figure-legends}{%
+\subsection{Figure legends}\label{figure-legends}}
+
+\textbf{\autoref{pcoa_dbrda}.} \nameref{pcoa_dbrda}
+
+\textbf{\autoref{community}.} \nameref{community}
+
+\textbf{\autoref{cyano}.} \nameref{cyano}
+
+\textbf{\autoref{bactero}.} \nameref{bactero}
+
+\textbf{\autoref{alpha}.} \nameref{alpha}
+
+\textbf{\autoref{gamma}.} \nameref{gamma}
+
+\newpage
+\blandscape
+
+\hypertarget{figures}{%
+\subsection{Figures}\label{figures}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/pcoa_dbrda_figure} 
+
+}
+
+\caption{(A) Principal Coordinates Analysis (PCoA) of Bray-Curtis distances based on OTU abundances of bacterial and archaeal communities sampled in Saline and Funtana Bay. The proportion of explained variation by each axis is shown on the corresponding axis in parentheses. (B) Distance-Based Redundancy Analysis (db-RDA) of Bray-Curtis distances based on the same community data sampled at the same locations and constrained by a set of environmental parameters (T -- temperature, S -- salinity, \ch{PO4^3-} -- orthophosphate, \ch{NH4^+} -- ammonium, \ch{NO2-} -- nitrite, \ch{NO3-} -- nitrate, \ch{SiO4^4-} -- orthosilicate, PM -- particulate matter, Chl \textit{a} -- chlorophyll \textit{a} and PA -- prokaryotic abundance). Scaling type 1 was selected for the biplot. The proportion of community data variation explained by environmental variables ($R^2_a$) is stated on the biplot, while the proportion of community data variation expalined by each canonical axis is shown on the corresponding axis in parentheses. Samples in both plots originating from the same station or same season are labeled in different shape and color.\label{pcoa_dbrda}}\label{fig:unnamed-chunk-1}
+\end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/community_bar_plot} 
+
+}
+
+\caption{Taxonomic classification and relative contribution of the most abundant ($\geq$ 1 \si{\percent}) bacterial and archaeal sequences in communities sampled in Saline and Funtana Bay. No Relative -- sequences without known relatives\label{community}}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/cyanobacteria_bar_plot} 
+
+}
+
+\caption{Taxonomic classification and relative contribution of the most abundant ($\geq$ 1 \si{\percent}) cyanobacterial sequences in communities sampled in Saline and Funtana Bay. The proportion of cyanobacterial sequences in the total bacterial and archaeal community is given above the corresponding bar.\label{cyano}}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/bacteroidota_bar_plot} 
+
+}
+
+\caption{Taxonomic classification and relative contribution of the most abundant ($\geq$ 1 \si{\percent}) sequences within the \textit{Bacteroidota} in communities sampled in Saline and Funtana Bay. The proportion of sequences classified as \textit{Bacteroidota} in the total bacterial and archaeal community is given above the corresponding bar. NR -- No Relative (sequences without known relatives within the corresponding group)\label{bactero}}\label{fig:unnamed-chunk-4}
+\end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/alphaproteobacteria_bar_plot} 
+
+}
+
+\caption{Taxonomic classification and relative contribution of the most abundant ($\geq$ 2 \si{\percent}) alphaproteobacterial sequences in communities sampled in Saline and Funtana Bay. The proportion of alphaproteobacterial sequences in the total bacterial and archaeal community is given above the corresponding bar. NR -- No Relative (sequences without known relatives within the corresponding group)\label{alpha}}\label{fig:unnamed-chunk-5}
+\end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/gammaproteobacteria_bar_plot} 
+
+}
+
+\caption{Taxonomic classification and relative contribution of the most abundant ($\geq$ 1 \si{\percent}) gammaproteobacterial sequences in communities sampled in Saline and Funtana Bay. The proportion of gammaproteobacterial sequences in the total bacterial and archaeal community is given above the corresponding bar. NR -- No Relative (sequences without known relatives within the corresponding group)\label{gamma}}\label{fig:unnamed-chunk-6}
+\end{figure}
+\elandscape
+
+\end{document}

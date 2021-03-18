@@ -4,6 +4,7 @@ MOTH = data/mothur/
 REFS = data/references/
 BASIC_STEM = data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster
 FIGS = results/figures/
+NUM = results/numerical/
 FINAL = submission/
 
 # Obtain the Linux version of mothur (v.1.43.0) from the mothur GitHub repository
@@ -82,7 +83,7 @@ $(REFS)silva.nr_v138.pcr.unique%align : $(REFS)silva.nr_v138.align\
 #
 #########################################################################################
 
-# Generate raw.files for mothur make.contigs 
+# Generate raw.files for mothur make.contigs
 $(RAW)raw.files : $(RAW)metadata.csv
 	cut -f 1,2,3 data/raw/metadata.csv | tail -n +2 > $(RAW)raw.files
 
@@ -177,24 +178,21 @@ $(FIGS)chloroplast_bar_plot%jpg\
 $(FIGS)cyanobacteria_bar_plot%jpg\
 $(FIGS)bacteroidota_bar_plot%jpg\
 $(FIGS)alphaproteobacteria_bar_plot%jpg\
-$(FIGS)gammaproteobacteria_bar_plot%jpg\
-$(FIGS)desulfobacterota_bar_plot%jpg : code/plot_community_bar_plot.R\
-                                       code/plot_community_bar_plot_chloroplast.R\
-                                       code/plot_community_bar_plot_cyanobacteria.R\
-                                       code/plot_community_bar_plot_bacteroidota.R\
-                                       code/plot_community_bar_plot_alphaproteobacteria.R\
-                                       code/plot_community_bar_plot_gammaproteobacteria.R\
-                                       code/plot_community_bar_plot_desulfobacterota.R\
-                                       $(BASIC_STEM).pick.nr_v138.wang.tax.summary\
-                                       $(RAW)metadata.csv\
-                                       $(RAW)group_colors.csv
+$(FIGS)gammaproteobacteria_bar_plot%jpg : code/plot_community_bar_plot.R\
+                                          code/plot_community_bar_plot_chloroplast.R\
+                                          code/plot_community_bar_plot_cyanobacteria.R\
+                                          code/plot_community_bar_plot_bacteroidota.R\
+                                          code/plot_community_bar_plot_alphaproteobacteria.R\
+                                          code/plot_community_bar_plot_gammaproteobacteria.R\
+                                          $(BASIC_STEM).pick.nr_v138.wang.tax.summary\
+                                          $(RAW)metadata.csv\
+                                          $(RAW)group_colors.csv
 	R -e "source('code/plot_community_bar_plot.R')"
 	R -e "source('code/plot_community_bar_plot_chloroplast.R')"
 	R -e "source('code/plot_community_bar_plot_cyanobacteria.R')"
 	R -e "source('code/plot_community_bar_plot_bacteroidota.R')"
 	R -e "source('code/plot_community_bar_plot_alphaproteobacteria.R')"
 	R -e "source('code/plot_community_bar_plot_gammaproteobacteria.R')"
-	R -e "source('code/plot_community_bar_plot_desulfobacterota.R')"
 
 # Construct a rarefaction plot
 $(FIGS)rarefaction.jpg : $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
@@ -207,6 +205,8 @@ $(FIGS)rarefaction.jpg : $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
 
 # Plot richness, diversity calculators and similarity coefficients
 $(FIGS)calculators%jpg\
+$(NUM)rarefied%Rdata\
+$(NUM)estimators_indices_metadata%Rdata\
 $(FIGS)seasonal_shared%jpg : $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
                              code/plot_calculators.R\
                              code/plot_seasonal_shared.R\
@@ -214,17 +214,12 @@ $(FIGS)seasonal_shared%jpg : $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
 	R -e "source('code/plot_calculators.R')"
 	R -e "source('code/plot_seasonal_shared.R')"
 
-# Construct PCoA plots
-$(FIGS)pcoa_figure.jpg : $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
-                         code/plot_pcoa.R\
-                         $(RAW)metadata.csv
-	R -e "source('code/plot_pcoa.R')"
-
-# Construct a matrix plot of similarity indices
-$(FIGS)matrix.jpg : $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
-                    code/plot_matrix.R\
-                    $(RAW)metadata.csv
-	R -e "source('code/plot_matrix.R')"
+# Construct PCoA and db-RDA plots
+$(FIGS)pcoa_dbrda_figure%jpg\
+$(NUM)statistic.dbrda%Rdata : $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
+                              code/plot_pcoa_dbrda.R\
+                              $(RAW)metadata.csv
+	R -e "source('code/plot_pcoa_dbrda.R')"
 
 #########################################################################################
 #
@@ -243,12 +238,13 @@ $(FINAL)supplementary.pdf : $(MOTH)summary.txt\
                             $(FIGS)bacteroidota_bar_plot.jpg\
                             $(FIGS)alphaproteobacteria_bar_plot.jpg\
                             $(FIGS)gammaproteobacteria_bar_plot.jpg\
-                            $(FIGS)desulfobacterota_bar_plot.jpg\
                             $(FIGS)rarefaction.jpg\
                             $(FIGS)calculators.jpg\
+                            $(NUM)rarefied.Rdata\
+                            $(NUM)estimators_indices_metadata.Rdata\
                             $(FIGS)seasonal_shared.jpg\
-                            $(FIGS)pcoa_figure.jpg\
-                            $(FIGS)matrix.jpg\
+                            $(FIGS)pcoa_dbrda_figure.jpg\
+                            $(NUM)statistic.dbrda.Rdata\
                             $(FINAL)manuscript.Rmd\
                             $(FINAL)header.tex\
                             $(FINAL)supplementary.Rmd\
@@ -277,6 +273,7 @@ clean :
 	rm -f $(RAW)raw.files || true
 	rm -rf code/mothur/ || true
 	rm -f $(FIGS)*.jpg || true
+	rm -f $(NUM)*.Rdata || true
 	rm -f mothur*logfile || true
 	rm -f $(FINAL)manuscript.pdf || true
 	rm -f $(FINAL)supplementary.pdf || true

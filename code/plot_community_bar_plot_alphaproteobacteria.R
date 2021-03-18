@@ -76,10 +76,10 @@ names <- parse(text=case_when(str_detect(plot$taxon, "uncultured") ~ paste0("pla
                               plot$taxon=="Stappiaceae_ge" ~ "italic('Stappiaceae')",
                               plot$taxon=="HIMB11" ~ "plain('HIMB11')",
                               plot$taxon=="AEGEAN-169_marine_group_ge" ~ "plain('AEGEAN-169 Marine Group')",
-                              plot$taxon=="Clade_Ia" ~ "plain('Clade Ia')",
-                              plot$taxon=="Clade_Ib" ~ "plain('Clade Ib')",
-                              plot$taxon=="Clade_II_ge" ~ "plain('Clade II')",
-                              plot$taxon=="Clade_III_ge" ~ "plain('Clade III')",
+                              plot$taxon=="Clade_Ia" ~ "plain('Subclade Ia')",
+                              plot$taxon=="Clade_Ib" ~ "plain('Subclade Ib')",
+                              plot$taxon=="Clade_II_ge" ~ "plain('Subclade II')",
+                              plot$taxon=="Clade_III_ge" ~ "plain('Subclade III')",
                               plot$taxon=="Other_Alphaproteobacteria" ~ "plain('Other')~italic('Alphaproteobacteria')",
                               plot$taxon=="S25-593_ge" ~ "plain('S25-593')",
                               TRUE ~ paste0("italic('", plot$taxon, "')")))
@@ -98,6 +98,7 @@ Sys.setlocale(locale="en_GB.utf8")
 plot <- inner_join(metadata, plot, by=c("ID"="Group")) %>%
   mutate(taxon=factor(taxon, levels=unique(plot$taxon))) %>%
   mutate(label=factor(label, levels=metadata$label)) %>%
+  mutate(station=factor(station, levels=c("S", "F"))) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
 
 # Selecting the relative abundance of the targeted group in the whole community, tidying the obtained data and
@@ -108,6 +109,7 @@ whole <- filter(community,
   filter(taxon=="Alphaproteobacteria")
 
 whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(station=factor(station, levels=c("S", "F"))) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
 
 # Generating plot
@@ -163,6 +165,6 @@ p <- ggplot(plot) +
 
 # Saving
 p <- cowplot::ggdraw(p) +
-     cowplot::draw_line(x=c(0.875, 0.875), y=c(0.170, 0.253), size=0.5) +
-     cowplot::draw_label("SAR11 Clade", x=0.885, y=0.212, hjust=0,  fontfamily="Times", size=12)
+     cowplot::draw_line(x=c(0.895, 0.895), y=c(0.170, 0.253), size=0.5) +
+     cowplot::draw_label("SAR11 Clade", x=0.905, y=0.212, hjust=0,  fontfamily="Times", size=12)
 ggsave("results/figures/alphaproteobacteria_bar_plot.jpg", p, width=297, height=210, units="mm")

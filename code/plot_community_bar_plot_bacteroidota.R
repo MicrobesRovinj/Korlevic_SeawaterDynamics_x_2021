@@ -92,6 +92,7 @@ Sys.setlocale(locale="en_GB.utf8")
 plot <- inner_join(metadata, plot, by=c("ID"="Group")) %>%
   mutate(taxon=factor(taxon, levels=unique(plot$taxon))) %>%
   mutate(label=factor(label, levels=metadata$label)) %>%
+  mutate(station=factor(station, levels=c("S", "F"))) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
 
 # Selecting the relative abundance of the targeted group in the whole community, tidying the obtained data and
@@ -102,6 +103,7 @@ whole <- filter(community,
   filter(taxon=="Bacteroidota")
 
 whole <- inner_join(metadata, whole, by=c("ID"="Group")) %>%
+  mutate(station=factor(station, levels=c("S", "F"))) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
 
 # Generating plot

@@ -1,0 +1,128 @@
+---
+title: "**Supplementary Information**"
+subtitle: "**Prokaryotic community temporal variation in a coastal marine environment**"
+output:
+  pdf_document:
+    keep_tex: true
+    includes:
+      in_header: header_supplementary.tex
+fontsize: 12pt
+geometry: margin=1.0in
+csl: citation_style.csl #Get themes at https://github.com/citation-style-language/styles
+bibliography: references.bib
+---
+
+```{r knitr_settings, eval=TRUE, echo=FALSE, cache=FALSE, message=FALSE}
+opts_chunk$set("tidy" = TRUE)
+opts_chunk$set("echo" = FALSE)
+opts_chunk$set("eval" = TRUE)
+opts_chunk$set("warning" = FALSE)
+opts_chunk$set("cache" = FALSE)
+opts_chunk$set("message" = FALSE)
+
+inline_hook <- function(x){
+	print(x)
+
+	if(is.list(x)){
+		x <- unlist(x)
+	}
+
+	if(is.numeric(x)){
+		if(abs(x - round(x)) < .Machine$double.eps^0.5){
+			paste(format(x,big.mark=',', digits=0, scientific=FALSE))
+		} else {
+			paste(format(x,big.mark=',', digits=1, nsmall=1, scientific=FALSE))
+		}
+	} else {
+    	paste(x)      
+	}
+}
+knitr::knit_hooks$set(inline=inline_hook)
+
+library("kableExtra")
+```
+
+\vspace{20mm}
+Marino Korlević^1$*$^, Marsej Markovski^1^, Gerhard J. Herndl^2,3^ and Mirjana Najdek^1^
+
+1\. Center for Marine Research, Ruđer Bošković Institute, Croatia
+
+2\. Department of Functional and Evolutionary Ecology, University of Vienna, Austria
+
+3\. NIOZ, Department of Marine Microbiology and Biogeochemistry, Royal Netherlands Institute for Sea Research, Utrecht University, The Netherlands
+
+^$*$^To whom correspondence should be addressed:
+
+Marino Korlević
+
+G. Paliaga 5, 52210 Rovinj, Croatia
+
+Tel.: +385 52 804 768
+
+Fax: +385 52 804 780
+
+e-mail: marino.korlevic@irb.hr
+
+Running title: Temporal variation of a coastal prokaryotic community
+
+[]: # (\linenumbers)
+\newpage
+\sisetup{mode=text}
+\setlength\parindent{24pt}
+
+## Supplementary figures
+
+```{r out.width="85%", fig.align="center", fig.cap="Rarefaction curves of bacterial and archaeal communities sampled in Saline and Funtana Bay.\\label{rarefaction}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/rarefaction.jpg"))
+```
+
+```{r out.width="85%", fig.align="center", fig.cap="Seasonal dynamics of observed number of OTUs, Chao1, ACE, exponential of the Shannon diversity index and Inverse Simpson index of bacterial and archaeal communities sampled in Saline and Funtana Bay.\\label{calculators}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/calculators.jpg"))
+```
+
+```{r out.width="85%", fig.align="center", fig.cap="Proportion of shared bacterial and archaeal communities (Bray-Curtis similarity coefficient) and shared bacterial and archaeal OTUs (Jaccard's similarity coefficient) between consecutive sampling dates of communites sampled in Saline and Funtana Bay.\\label{shared}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/seasonal_shared.jpg"))
+```
+
+\newpage
+\blandscape
+```{r out.width="85%", fig.align="center", fig.cap="Relative contribution of chloroplast sequences to the total number of obtained sequences in samples retrieved from Saline and Funtana Bay.\\label{chloroplast}", fig.pos="H"}
+include_graphics(normalizePath("results/figures/chloroplast_bar_plot.jpg"))
+```
+\elandscape
+
+\newpage
+## Supplementary table
+
+```{r nseq_notus}
+# Loading OTU/sample data
+shared <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.opti_mcc.shared")
+
+# Calculating the number of sequences and OTUs in each sample
+nseq_notus <- shared %>%
+  mutate(nseq=rowSums(select(., starts_with("Otu")))) %>%
+  mutate(notus=rowSums(select(., starts_with("Otu"))!=0)) %>%
+  select(Group, nseq, notus)
+
+# Loading metadata 
+metadata <- read_tsv("data/raw/metadata.csv")
+
+# Joining metadata with the number of sequences and OTUs
+invisible(Sys.setlocale(locale="en_GB.utf8"))
+metadata_nseq_notus <- inner_join(metadata, nseq_notus, by=c("ID"="Group")) %>%
+  select(ID, station, date, season, nseq, notus) %>%
+  mutate(date=as.Date(date, "%d.%m.%Y")) %>%
+  mutate(date=format(date, "%d %B %Y")) %>%
+  mutate(date=str_replace(date, "^0", "")) %>%
+  mutate(station=str_replace(station, "^S$", "Bay of Saline")) %>%
+  mutate(station=str_replace(station, "^F$", "Bay of Funtana")) %>%
+  mutate(ID=str_replace(ID, "^23_1$", "23a")) %>%
+  mutate(ID=str_replace(ID, "^23_2$", "23b")) %>%
+  mutate(nseq=format(nseq, big.mark=","), notus=format(notus, big.mark=","))
+
+# Generating the table
+kable(metadata_nseq_notus, format="latex", booktabs=TRUE, linesep="", longtable=TRUE, escape=FALSE, col.names=c("Sample ID", "Station", "Date", "Season", "No. of Sequences", "No. of OTUs"), caption="Sample ID, sampling station date and season, no. of sequences and no. of OTUs of each sample. The number of sequences and OTUs was calculated after exclusion of sequences without known relatives (no relative sequences) and eukaryotic, chloroplast and mitochondrial sequences.\\label{nseq_notus}", align="c") %>%
+  kable_styling(latex_options=c("hold_position", "repeat_header"), font_size=9) %>%
+  row_spec(0, bold=TRUE) %>%
+  column_spec(1, width="6em")
+```

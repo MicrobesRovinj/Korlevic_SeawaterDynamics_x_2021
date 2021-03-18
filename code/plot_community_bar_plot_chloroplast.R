@@ -63,6 +63,7 @@ Sys.setlocale(locale="en_GB.utf8")
 plot <- inner_join(metadata, plot, by=c("ID"="Group")) %>%
   mutate(taxon=factor(taxon, levels=rev(unique(plot$taxon)))) %>%
   mutate(label=factor(label, levels=metadata$label)) %>%
+  mutate(station=factor(station, levels=c("S", "F"))) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
 
 # Generating a common theme for plots
@@ -79,7 +80,7 @@ theme <- theme(text=element_text(family="Times"), line=element_line(color="black
 p <- ggplot(plot) +
   geom_bar(aes(x=date, y=abundance, fill=taxon), stat="identity", colour="black",
            size=0.3, width=8) +
-  scale_fill_manual(values=color, labels=names) + 
+  scale_fill_manual(values=color, labels=names, breaks=c("Chloroplast", "Other")) + 
   labs(x="Date", y="%", tag="%") +
   scale_x_date(breaks=seq(as.Date("2017-07-01"), as.Date("2018-11-01"), "months"),
                labels=c("Jul 2017", "Aug 2017", "Sep 2017", "Oct 2017", "Nov 2017", "Dec 2017",

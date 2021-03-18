@@ -1,5 +1,5 @@
 ## TITLE TO BE ADDED
-This is the repository for the manuscript "Seasonal Dynamics of Epiphytic Microbial Communities on Marine Macrophyte Surfaces" written by Marino Korlević, Marsej Markovski, Zihao Zhao, Gerhard J. Herndl and Mirjana Najdek. The raw sequencing data with the exception of negative controls have been deposited in the European Nucleotide Archive (ENA) at EMBL-EBI under accession number PRJEB37267. Negative control samples are part of this repository and located in data/raw/. To be able to reproduce the results the mothur compatible SILVA reference file (Release 138, available under a [CC-BY license](https://www.arb-silva.de/silva-license-information/)) must be created according to the instruction given on [the mothur blog](https://mothur.org/blog/2020/SILVA-v138-reference-files/) and in the Makefile. This README file contains an overview of the repository structure, information on software dependencies and instructions how to reproduce and rerun the analysis.
+This is the repository for the manuscript "Prokaryotic community temporal variation in a coastal marine environment" written by Marino Korlević, Marsej Markovski, Gerhard J. Herndl and Mirjana Najdek. The raw sequencing data with the exception of negative controls have been deposited in the European Nucleotide Archive (ENA) at EMBL-EBI under accession numbers SAMEA6648771 -- SAMEA6648788, SAMEA6648824, SAMEA6648825, SAMEA8117500 -- SAMEA8117516. Negative control samples are part of this repository and located in data/raw/. To be able to reproduce the results the mothur compatible SILVA reference file (Release 138, available under a [CC-BY license](https://www.arb-silva.de/silva-license-information/)) must be created according to the instruction given on [the mothur blog](https://mothur.org/blog/2020/SILVA-v138-reference-files/) and in the Makefile. This README file contains an overview of the repository structure, information on software dependencies and instructions how to reproduce and rerun the analysis.
 
 ### Overview
 
@@ -31,7 +31,8 @@ This is the repository for the manuscript "Seasonal Dynamics of Epiphytic Microb
 	|- code/                        # any programmatic code
 	|
 	|- results                      # all output from workflows and analyses
-	| +- figures/                   # graphs designated for manuscript or supplementary information figures
+	| |- figures/                   # graphs designated for manuscript or supplementary information figures
+	| +- numerical/                 # results of the statistics or other numerical results for manuscript or supplementary information
 	|
 	|-.gitignore                    # gitinore file for this study
 	|-.Rprofile                     # Rprofile file containing information on which R libraries to load,
@@ -54,6 +55,8 @@ This is the repository for the manuscript "Seasonal Dynamics of Epiphytic Microb
   * `vegan (v. 2.5.6)`
   * `RColorBrewer (v. 1.1.2)`
   * `kableExtra (v. 1.1.0)`
+  * `cowplot (v. 1.0.0)`
+  * `lemon (v. 0.4.3)`
 * The analysis supposes the use of 16 processor cores.
 
 #### Running analysis

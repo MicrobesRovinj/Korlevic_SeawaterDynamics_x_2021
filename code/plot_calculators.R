@@ -11,20 +11,21 @@
 # Loading OTU/sample data
 shared <- read_tsv("data/mothur/raw.trim.contigs.good.unique.good.filter.unique.precluster.pick.pick.pick.opti_mcc.shared")
 
+# Adding sample labels to row names (input for library vegan)
+shared <- shared %>%
+  select(-label, -numOtus) %>%
+  column_to_rownames("Group")
+
 # Generating a random rarefied community data
 rarefied <- shared %>%
-  select(-label, -Group, -numOtus) %>%
   rrarefy(., min(rowSums(.))) %>%
-  as_tibble(.name_repair="unique") %>%
-  add_column("Group"=shared$Group, .before=TRUE) %>%
-  select_if(list(~!is.numeric(.) || sum(.)!=0))
+  as_tibble(.name_repair="unique", rownames=NA) %>%
+  rownames_to_column("Group") %>%
+  select_if(list(~!is.numeric(.) || sum(.)!=0)) %>%
+  column_to_rownames("Group")
 
-# Copying sample labels to rows (input for library vegan)
-row.names(rarefied) <- rarefied$Group
-
-# Removing the column containing sample labels
-rarefied <- rarefied %>%
-  select(-Group)
+# Saving rarefied community data
+save(rarefied, file="results/numerical/rarefied.Rdata")
 
 # Calculating Chao1 and ACE species estimators
 estimators <- estimateR(rarefied)
@@ -39,12 +40,14 @@ invsimpson <- tibble(Group=names(invsimpson), invsimpson)
 
 # Transforming Shannon entropy to effective number of species
 # (http://www.loujost.com/Statistics%20and%20Physics/Diversity%20and%20Similarity/EffectiveNumberOfSpecies.htm)
-shannon <- mutate(shannon, shannon=exp(shannon)) %>%
+eshannon <- mutate(shannon, shannon=exp(shannon)) %>%
   rename(eshannon=shannon)
 
 # Joining together estimators and indices
-estimators_indices <- inner_join(estimators, shannon, by="Group") %>%
-  inner_join(., invsimpson, by="Group")
+estimators_indices <- inner_join(estimators, eshannon, by="Group") %>%
+  inner_join(., invsimpson, by="Group") %>%
+  mutate(eshannon=as.numeric(eshannon)) %>%
+  mutate(invsimpson=as.numeric(invsimpson))         
 
 # Loading metadata 
 metadata <- read_tsv("data/raw/metadata.csv")
@@ -53,6 +56,9 @@ metadata <- read_tsv("data/raw/metadata.csv")
 Sys.setlocale(locale="en_GB.utf8")
 estimators_indices_metadata <- inner_join(metadata, estimators_indices, by=c("ID"="Group")) %>%
   mutate(date=as.Date(date, "%d.%m.%Y"))
+
+# Saving calculated estimators and indices
+save(estimators_indices_metadata, file="results/numerical/estimators_indices_metadata.Rdata")
 
 # Generating a common theme for plots
 theme <- theme(text=element_text(family="Times"), line=element_line(color="black"),
