@@ -62,8 +62,8 @@ This is the repository for the manuscript "Prokaryotic community temporal variat
 #### Running analysis
 Before running the analysis be sure to generate the mothur compatible SILVA reference file and indicate in the Makefile its location. The manuscript and supplementary information can be regenerated on a Linux computer by running the following commands:
 ```
-git clone https://github.com/MicrobesRovinj/Korlevic_EpiphyticDynamics_EnvironMicrobiol_2020.git
-cd Korlevic_EpiphyticDynamics_EnvironMicrobiol_2020/
+git clone https://github.com/MicrobesRovinj/Korlevic_SeawaterDynamics_x_2021.git
+cd Korlevic_SeawaterDynamics_x_2021/
 make submission/manuscript.pdf
 ```
 If something goes wrong and the analysis needs to be restarted run the following command from the project home directory before rerunning the analysis:
