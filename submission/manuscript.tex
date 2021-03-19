@@ -1,47 +1,33 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
-\documentclass[
-  12pt,
-]{article}
+\documentclass[12pt,]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Prokaryotic community temporal variation in a coastal marine environment},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1.0in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Prokaryotic community temporal variation in a coastal marine environment},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -51,14 +37,51 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{\textbf{Prokaryotic community temporal variation in a coastal marine
+environment}}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
 \usepackage{times} % Times New Roman font
 \usepackage[T1]{fontenc}
 
@@ -105,11 +128,6 @@
 
 \usepackage{chemformula}
 
-\title{\textbf{Prokaryotic community temporal variation in a coastal marine
-environment}}
-\author{}
-\date{\vspace{-2.5em}}
-
 \begin{document}
 \maketitle
 
@@ -153,7 +171,7 @@ Running title: Temporal variation of a coastal prokaryotic community
 
 Prokaryotic communities inhabiting surface waters of temperate areas
 exhibit patterns of seasonal succession. Studies describing these
-temporal changes were mainly not performed at stations located in the
+temporal changes were usually not performed at stations located in the
 proximity of the coast. The temporal variation of these communities was
 determined in the northern Adriatic Sea surface waters sampled at two
 stations located in the close proximity of its western shore. Sequencing
@@ -257,9 +275,9 @@ previously reported environmental parameters measured at the same time
 
 Surface seawater from the northern Adriatic Sea was collected in the
 proximity of the coast (25 -- 50 \si{m}) in two closely located bays
-(\textasciitilde7 km apart), Saline (\ang{45;7;5} N, \ang{13;37;20} E)
+(\textasciitilde{}7 km apart), Saline (\ang{45;7;5} N, \ang{13;37;20} E)
 and Funtana (\ang{45;10;39} N, \ang{13;35;42} E), by diving (depth,
-\textasciitilde1.5 \si {m}) in 10 \si{l} containers and transported to
+\textasciitilde{}1.5 \si {m}) in 10 \si{l} containers and transported to
 the laboratory where 10 -- 20 \si{l} were filtered through a 20 \si{\um}
 mesh net. The filtrate was further sequentially filtered using a
 peristaltic pump through 3 \si{\um} and 0.2 \si{\um} polycarbonate
@@ -334,10 +352,11 @@ tidyverse (version 1.2.1) (Wickham, 2017; Wickham et al., 2019) and
 multiple other packages (Neuwirth, 2014; Xie, 2014, 2015, 2019a, 2019b,
 2019c; Xie et al., 2018; Allaire et al., 2019; McKinnon Edwards, 2019;
 Wilke, 2019; Zhu, 2019). The detailed analysis procedure including the
-RMarkdown file are available in the GitHub repository (\textbf{TO BE
-ADDED}). The average sequencing error rate of 0.01 \si{\percent} was
-calculated based on the ATCC MSA-1002 mock community included in each
-sequencing batch, which is in line with previously reported values for
+RMarkdown file are available in the GitHub repository
+(\url{https://github.com/MicrobesRovinj/Korlevic_SeawaterDynamics_x_2021}).
+The average sequencing error rate of 0.01 \si{\percent} was calculated
+based on the ATCC MSA-1002 mock community included in each sequencing
+batch, which is in line with previously reported values for
 next-generation 16S rRNA amplicon sequencing (Kozich et al., 2013;
 Schloss et al., 2016). Also, negative controls processed together with
 the samples yielded on average only 2 sequences after quality curation.
@@ -352,20 +371,20 @@ Bay of Funtana (one of the samples was a sequencing replicate) yielded
 1.6 million reads after quality curation and exclusion of sequences
 without known relatives (no relative sequences), eukaryotic, chloroplast
 and mitochondrial sequences (\autoref{supp-nseq_notus}). The number of
-reads per sample ranged from 25,366 to 77,466
+reads per sample ranged from 25,360 to 77,466
 (\autoref{supp-rarefaction} and \autoref{supp-nseq_notus}). Reads were
-clustered into 16,656 different OTUs at a similarity level of 97
+clustered into 16,629 different OTUs at a similarity level of 97
 \si{\percent}. To account for different sequencing depth reads were
-normalized to the minimum number of sequences per sample (25,366,
-\autoref{supp-nseq_notus}) that resulted in 13,501 different OTUs
-ranging from 598 to 1,825 OTUs per sample (\autoref{supp-calculators}).
+normalized to the minimum number of sequences per sample (25,360,
+\autoref{supp-nseq_notus}) that resulted in 13,440 different OTUs
+ranging from 608 to 1,790 OTUs per sample (\autoref{supp-calculators}).
 
 Temporal variations in richness and diversity were determined by
 calculating the observed number of OTUs, Chao1, ACE, Exponential Shannon
 and Inverse Simpson (Jost, 2006). Similar trends in richness and
 diversity were observed at both stations (\autoref{supp-calculators})
 characterized by a December 2017 richness maximum both in the Saline
-(Number of OTUs, 1,777 OTUs) and Funtana (Number of OTUs, 1,825 OTUs)
+(Number of OTUs, 1,790 OTUs) and Funtana (Number of OTUs, 1,786 OTUs)
 Bay. Interestingly, the Inverse Simpson index did not show an elevated
 value in December 2017 as the Exponential Shannon index indicating that
 rare OTUs contributed substantially to the observed richness maxima. To
@@ -380,7 +399,7 @@ addition, a stronger drop in shared communities between March and April
 community shift in this period (\autoref{supp-shared}). Analysis of this
 time series data showed that only 0.3 \si{\percent} of OTUs were present
 throughout the study period while these persistent OTUs contributed to
-61.8 \si{\percent} of sequences.
+62.0 \si{\percent} of sequences.
 
 To evaluate the temporal variation of bacterial and archaeal communities
 Principal Coordinate Analysis (PCoA) of Bray-Curtis distances was
@@ -392,7 +411,7 @@ communities was further supported by ANOSIM (R = 0.72, \emph{p}
 contributes to the observed temporal community variation the community
 data was constrained by a set of previously reported environmental
 variables (Najdek et al., 2020a, 2020b) using Distance-Based Redundancy
-Analysis (db-RDA) (\autoref{pcoa_dbrda}B). Nearly half (\(R^2_a=\) 45.7
+Analysis (db-RDA) (\autoref{pcoa_dbrda}B). Nearly half (\(R^2_a=\) 45.5
 \si{\percent}) of the observed community variation could be explained by
 the explanatory variables. Separation between summer and autumn/winter
 communities could mainly be explained by temperature, prokaryotic
@@ -504,7 +523,7 @@ prokaryotic communities inhabiting surface waters of a wider area.
 Temporal changes in richness were substantial as indicated by the
 proportion of OTUs present at every sampling point (0.3 \si{\percent}).
 Sequences clustered into these persistent OTUs comprised a high
-proportion of reads (61.8 \si{\percent}). Similar proportions of
+proportion of reads (62.0 \si{\percent}). Similar proportions of
 persistent core OTUs and their contribution to the total number of
 sequences were also reported in other time series studies (Gilbert et
 al., 2009, 2012). Analysis of temporal variations in alpha diversity
@@ -1072,7 +1091,7 @@ and pipe syntax}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/pcoa_dbrda_figure} 
+{\centering \includegraphics[width=1\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/pcoa_dbrda_figure} 
 
 }
 
@@ -1081,7 +1100,7 @@ and pipe syntax}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/community_bar_plot} 
+{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/community_bar_plot} 
 
 }
 
@@ -1090,7 +1109,7 @@ and pipe syntax}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/cyanobacteria_bar_plot} 
+{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/cyanobacteria_bar_plot} 
 
 }
 
@@ -1099,7 +1118,7 @@ and pipe syntax}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/bacteroidota_bar_plot} 
+{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/bacteroidota_bar_plot} 
 
 }
 
@@ -1108,7 +1127,7 @@ and pipe syntax}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/alphaproteobacteria_bar_plot} 
+{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/alphaproteobacteria_bar_plot} 
 
 }
 
@@ -1117,12 +1136,13 @@ and pipe syntax}.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/gammaproteobacteria_bar_plot} 
+{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/gammaproteobacteria_bar_plot} 
 
 }
 
 \caption{Taxonomic classification and relative contribution of the most abundant ($\geq$ 1 \si{\percent}) gammaproteobacterial sequences in communities sampled in Saline and Funtana Bay. The proportion of gammaproteobacterial sequences in the total bacterial and archaeal community is given above the corresponding bar. NR -- No Relative (sequences without known relatives within the corresponding group)\label{gamma}}\label{fig:unnamed-chunk-6}
 \end{figure}
 \elandscape
+
 
 \end{document}

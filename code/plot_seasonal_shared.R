@@ -20,11 +20,8 @@ rarefied <- shared %>%
   select_if(list(~ !is.numeric(.) || sum(.)!=0))
 
 # Copying sample labels to rows (input for library vegan)
-row.names(rarefied) <- rarefied$Group
-
-# Removing column containing sample labels
 rarefied <- rarefied %>%
-  select(-Group)
+  column_to_rownames("Group")
 
 # Calculating dissimilarity indices
 jaccard <- as.matrix(vegdist(rarefied, method="jaccard", binary=T))

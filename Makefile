@@ -277,9 +277,3 @@ clean :
 	rm -f mothur*logfile || true
 	rm -f $(FINAL)manuscript.pdf || true
 	rm -f $(FINAL)supplementary.pdf || true
-
-# Executing all
-.PHONY: all
-all : $(MOTH)summary.txt\
-      $(BASIC_STEM).pick.pick.pick.opti_mcc.shared\
-      $(BASIC_STEM).pick.pick.pick.error.summary

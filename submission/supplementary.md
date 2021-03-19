@@ -1,163 +1,29 @@
-\documentclass[12pt,]{article}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\usepackage[margin=1.0in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Supplementary Information},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
+---
+title: "**Supplementary Information**"
+subtitle: "**Prokaryotic community temporal variation in a coastal marine environment**"
+output:
+  pdf_document:
+    keep_tex: true
+    includes:
+      in_header: header_supplementary.tex
+fontsize: 12pt
+geometry: margin=1.0in
+csl: citation_style.csl #Get themes at https://github.com/citation-style-language/styles
+bibliography: references.bib
+---
 
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
 
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{\textbf{Supplementary Information}}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \subtitle{\textbf{Prokaryotic community temporal variation in a coastal marine
-environment}}
-  \author{}
-    \preauthor{}\postauthor{}
-    \date{}
-    \predate{}\postdate{}
-  
-\usepackage{times} % Times New Roman font
-\usepackage[T1]{fontenc}
-
-\usepackage[none]{hyphenat}
-
-\usepackage{setspace}
-\doublespacing
-\setlength{\parskip}{1em}
-
-\usepackage{lineno}
-\renewcommand{\linenumberfont}{\normalfont\tiny}
-
-\usepackage{pdfpages}
-
-\usepackage{indentfirst}
-
-\usepackage[labelsep=period, labelfont=bf]{caption}
-\renewcommand{\thefigure}{S\arabic{figure}}
-\renewcommand{\figurename}{Fig.}
-\renewcommand{\thetable}{S\arabic{table}}
-\captionsetup{justification=raggedright,singlelinecheck=false}
-
-\usepackage{pdflscape}
-\newcommand{\blandscape}{\begin{landscape}}
-\newcommand{\elandscape}{\end{landscape}}
-
-\usepackage{siunitx}
-\DeclareSIUnit\molar{\mole\per\cubic\deci\metre}
-\DeclareSIUnit\Molar{\textsc{m}}
-\DeclareSIUnit\cells{\text{cells}}
-
-\usepackage{caption}
-\captionsetup{justification=justified}
-
-\usepackage{float}
-
-\usepackage{txfonts}
-
-\renewcommand{\figureautorefname}{Fig.}
-
-\usepackage{microtype}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{float}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage{xcolor}
-
-\begin{document}
-\maketitle
 
 \vspace{20mm}
+Marino Korlević^1$*$^, Marsej Markovski^1^, Gerhard J. Herndl^2,3^ and Mirjana Najdek^1^
 
-Marino Korlević\textsuperscript{1\(*\)}, Marsej
-Markovski\textsuperscript{1}, Gerhard J. Herndl\textsuperscript{2,3} and
-Mirjana Najdek\textsuperscript{1}
+1\. Center for Marine Research, Ruđer Bošković Institute, Croatia
 
-1. Center for Marine Research, Ruđer Bošković Institute, Croatia
+2\. Department of Functional and Evolutionary Ecology, University of Vienna, Austria
 
-2. Department of Functional and Evolutionary Ecology, University of
-Vienna, Austria
+3\. NIOZ, Department of Marine Microbiology and Biogeochemistry, Royal Netherlands Institute for Sea Research, Utrecht University, The Netherlands
 
-3. NIOZ, Department of Marine Microbiology and Biogeochemistry, Royal
-Netherlands Institute for Sea Research, Utrecht University, The
-Netherlands
-
-\textsuperscript{\(*\)}To whom correspondence should be addressed:
+^$*$^To whom correspondence should be addressed:
 
 Marino Korlević
 
@@ -167,17 +33,16 @@ Tel.: +385 52 804 768
 
 Fax: +385 52 804 780
 
-e-mail:
-\href{mailto:marino.korlevic@irb.hr}{\nolinkurl{marino.korlevic@irb.hr}}
+e-mail: marino.korlevic@irb.hr
 
 Running title: Temporal variation of a coastal prokaryotic community
 
+[]: # (\linenumbers)
 \newpage
 \sisetup{mode=text}
 \setlength\parindent{24pt}
 
-\hypertarget{supplementary-figures}{%
-\subsection{Supplementary figures}\label{supplementary-figures}}
+## Supplementary figures
 
 \begin{figure}[H]
 
@@ -219,9 +84,7 @@ Running title: Temporal variation of a coastal prokaryotic community
 \elandscape
 
 \newpage
-
-\hypertarget{supplementary-table}{%
-\subsection{Supplementary table}\label{supplementary-table}}
+## Supplementary table
 
 \begingroup\fontsize{9}{11}\selectfont
 
@@ -277,6 +140,3 @@ Running title: Temporal variation of a coastal prokaryotic community
 35 & Bay of Funtana & 5 October 2018 & Autumn & 49,573 & 1,026\\*
 \end{longtable}
 \endgroup{}
-
-
-\end{document}
