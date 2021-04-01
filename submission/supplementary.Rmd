@@ -1,6 +1,6 @@
 ---
 title: "**Supplementary Information**"
-subtitle: "**Prokaryotic community temporal variation in a coastal marine environment**"
+subtitle: "**Temporal variation in the prokaryotic community of a nearshore marine environment**"
 output:
   pdf_document:
     keep_tex: true
@@ -42,7 +42,7 @@ knitr::knit_hooks$set(inline=inline_hook)
 library("kableExtra")
 ```
 
-\vspace{20mm}
+\vspace{10mm}
 Marino Korlević^1$*$^, Marsej Markovski^1^, Gerhard J. Herndl^2,3^ and Mirjana Najdek^1^
 
 1\. Center for Marine Research, Ruđer Bošković Institute, Croatia
@@ -63,7 +63,7 @@ Fax: +385 52 804 780
 
 e-mail: marino.korlevic@irb.hr
 
-Running title: Temporal variation of a coastal prokaryotic community
+Running title: Temporal variation in a nearshore prokaryotic community
 
 []: # (\linenumbers)
 \newpage
@@ -80,7 +80,7 @@ include_graphics(normalizePath("results/figures/rarefaction.jpg"))
 include_graphics(normalizePath("results/figures/calculators.jpg"))
 ```
 
-```{r out.width="85%", fig.align="center", fig.cap="Proportion of shared bacterial and archaeal communities (Bray-Curtis similarity coefficient) and shared bacterial and archaeal OTUs (Jaccard's similarity coefficient) between consecutive sampling dates of communites sampled in Saline and Funtana Bay.\\label{shared}", fig.pos="H"}
+```{r out.width="85%", fig.align="center", fig.cap="Proportion of shared bacterial and archaeal communities (Bray-Curtis similarity coefficient) and shared bacterial and archaeal OTUs (Jaccard's similarity coefficient) between consecutive sampling dates of communities sampled in Saline and Funtana Bay.\\label{shared}", fig.pos="H"}
 include_graphics(normalizePath("results/figures/seasonal_shared.jpg"))
 ```
 

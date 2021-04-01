@@ -1,33 +1,47 @@
-\documentclass[12pt,]{article}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  12pt,
+]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Supplementary Information},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1.0in]{geometry}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Supplementary Information},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -37,52 +51,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{\textbf{Supplementary Information}}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  \subtitle{\textbf{Prokaryotic community temporal variation in a coastal marine
-environment}}
-  \author{}
-    \preauthor{}\postauthor{}
-    \date{}
-    \predate{}\postdate{}
-  
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{times} % Times New Roman font
 \usepackage[T1]{fontenc}
 
@@ -139,10 +115,22 @@ environment}}
 \usepackage{makecell}
 \usepackage{xcolor}
 
+\title{\textbf{Supplementary Information}}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{\textbf{Temporal variation in the prokaryotic community of a nearshore
+marine environment}}
+\author{}
+\date{\vspace{-2.5em}}
+
 \begin{document}
 \maketitle
 
-\vspace{20mm}
+\vspace{10mm}
 
 Marino Korlević\textsuperscript{1\(*\)}, Marsej
 Markovski\textsuperscript{1}, Gerhard J. Herndl\textsuperscript{2,3} and
@@ -170,7 +158,7 @@ Fax: +385 52 804 780
 e-mail:
 \href{mailto:marino.korlevic@irb.hr}{\nolinkurl{marino.korlevic@irb.hr}}
 
-Running title: Temporal variation of a coastal prokaryotic community
+Running title: Temporal variation in a nearshore prokaryotic community
 
 \newpage
 \sisetup{mode=text}
@@ -181,7 +169,7 @@ Running title: Temporal variation of a coastal prokaryotic community
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/rarefaction} 
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/rarefaction} 
 
 }
 
@@ -190,7 +178,7 @@ Running title: Temporal variation of a coastal prokaryotic community
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/calculators} 
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/calculators} 
 
 }
 
@@ -199,18 +187,18 @@ Running title: Temporal variation of a coastal prokaryotic community
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/seasonal_shared} 
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/seasonal_shared} 
 
 }
 
-\caption{Proportion of shared bacterial and archaeal communities (Bray-Curtis similarity coefficient) and shared bacterial and archaeal OTUs (Jaccard's similarity coefficient) between consecutive sampling dates of communites sampled in Saline and Funtana Bay.\label{shared}}\label{fig:unnamed-chunk-3}
+\caption{Proportion of shared bacterial and archaeal communities (Bray-Curtis similarity coefficient) and shared bacterial and archaeal OTUs (Jaccard's similarity coefficient) between consecutive sampling dates of communities sampled in Saline and Funtana Bay.\label{shared}}\label{fig:unnamed-chunk-3}
 \end{figure}
 
 \newpage
 \blandscape
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.85\linewidth]{/storage/home/mkorlevi/Korlevic_SeawaterDynamics_x_2021/results/figures/chloroplast_bar_plot} 
+{\centering \includegraphics[width=0.85\linewidth]{/mydisk/POSAO2/isabella/Korlevic_SeawaterDynamics_x_2021/results/figures/chloroplast_bar_plot} 
 
 }
 
@@ -236,7 +224,7 @@ Running title: Temporal variation of a coastal prokaryotic community
 \textbf{Sample ID} & \textbf{Station} & \textbf{Date} & \textbf{Season} & \textbf{No. of Sequences} & \textbf{No. of OTUs}\\
 \midrule
 \endhead
-\
+
 \endfoot
 \bottomrule
 \endlastfoot
@@ -277,6 +265,5 @@ Running title: Temporal variation of a coastal prokaryotic community
 35 & Bay of Funtana & 5 October 2018 & Autumn & 49,573 & 1,026\\*
 \end{longtable}
 \endgroup{}
-
 
 \end{document}
