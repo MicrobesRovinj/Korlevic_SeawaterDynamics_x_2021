@@ -22,7 +22,8 @@ metadata <- read_tsv("data/raw/metadata.csv") %>%
   arrange(date) %>%
   mutate(date=format(date, "%d %B %Y")) %>%
   mutate(date=str_replace(date, "^0", "")) %>%
-  mutate(date=if_else(label=="24/4-18 F-2", paste0(date, "a"), date))
+  mutate(date=if_else(label=="24/4-18 F-1", paste0(date, "a"), date)) %>%
+  mutate(date=if_else(label=="24/4-18 F-2", paste0(date, "b"), date))
 
 # Joining metadata and input data
 metadata_rarefaction <- inner_join(metadata, rarefaction, by=c("ID"="sample"))
@@ -50,8 +51,8 @@ color_type <- tribble(~date, ~color, ~line_type,
                       "26 March 2018", "#A6CEE3", 3,
                       "27 March 2018", "#A6CEE3", 3,
                       "23 April 2018", "#1F78B4", 3,
-                      "24 April 2018", "#1F78B4", 3,
-                      "24 April 2018a", "#B2DF8A", 3,
+                      "24 April 2018a", "#1F78B4", 3,
+                      "24 April 2018b", "#B2DF8A", 3,
                       "21 May 2018", "#33A02C", 3,
                       "22 May 2018", "#33A02C", 3,
                       "18 June 2018", "#FB9A99", 3,
