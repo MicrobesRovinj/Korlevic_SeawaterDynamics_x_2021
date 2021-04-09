@@ -7,7 +7,7 @@ This is the repository for the manuscript "Prokaryotic community temporal variat
 	|- README                       # the top level description of content (this doc)
 	|- LICENSE                      # the license for this project
 	|
-	|- submission/                  # files necessary for manuscript or supplementary information rendering, e.g executable Rmarkdown
+	|- submission/                  # files necessary for manuscript or supplementary information rendering, e.g. executable Rmarkdown
 	| |- manuscript.Rmd             # executable Rmarkdown for the manuscript of this study
 	| |- manuscript.md              # Markdown (GitHub) version of the manuscript.Rmd file
 	| |- manuscript.tex             # TeX version of manuscript.Rmd file
