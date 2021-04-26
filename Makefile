@@ -88,22 +88,13 @@ $(RAW)raw.files : $(RAW)metadata.csv
 	cut -f 1,2,3 data/raw/metadata.csv | tail -n +2 > $(RAW)raw.files
 
 # Download project fastq.gz files from the European Nucleotide Archive (ENA)
-$(RAW)18118-*.fastq : ~/raw/together/*.fastq\
-                      $(RAW)NC_*.fastq\
-                      $(RAW)raw.files
-	(cut -f 2 $(RAW)raw.files; cut -f 3 $(RAW)raw.files) | sed "/^NC_/ d" > $(RAW)names_file.txt
-	xargs -I % --arg-file=$(RAW)names_file.txt cp ~/raw/together/% -t $(RAW)
-
-# Download project fastq.gz files from the European Nucleotide Archive (ENA)
-$(RAW)18118-*.fastq : ~/raw/together/*.fastq\
-                      $(RAW)NC_*.fastq\
-                      $(RAW)raw.files
+$(RAW)18118-*.fastq : $(RAW)NC_*.fastq
 	wget "https://www.ebi.ac.uk/ena/portal/api/search?result=read_run&fields=study_accession,sample_accession,experiment_accession,run_accession,tax_id,scientific_name,fastq_ftp,submitted_ftp,sra_ftp&includeAccessionType=sample&includeAccessions=SAMEA6648771,SAMEA6648772,SAMEA6648773,SAMEA6648774,SAMEA6648775,SAMEA6648776,SAMEA6648777,SAMEA6648778,SAMEA6648779,SAMEA6648780,SAMEA6648781,SAMEA6648782,SAMEA6648783,SAMEA6648784,SAMEA6648785,SAMEA6648786,SAMEA6648787,SAMEA6648788,SAMEA6648824,SAMEA6648825,SAMEA8117500,SAMEA8117501,SAMEA8117502,SAMEA8117503,SAMEA8117504,SAMEA8117505,SAMEA8117506,SAMEA8117507,SAMEA8117508,SAMEA8117509,SAMEA8117510,SAMEA8117511,SAMEA8117512,SAMEA8117513,SAMEA8117514,SAMEA8117515,SAMEA8117516&download=true&format=tsv" -O $(RAW)deposited_list.txt
-        cut -f $$(head -1 $(RAW)deposited_list.txt | tr "\t" "\n" | cat -n | grep "submitted_ftp" | cut -f 1) $(RAW)deposited_list.txt > $(RAW)fastq.gz.txt
-        tail -n +2 $(RAW)fastq.gz.txt | tr ";" "\n" > $(RAW)fastq.gz_list.txt
-        sed -e "s/^/ftp:\/\//" -i $(RAW)fastq.gz_list.txt
-        wget -i $(RAW)fastq.gz_list.txt -P $(RAW)
-        gzip -d $(RAW)*.gz
+	cut -f $$(head -1 $(RAW)deposited_list.txt | tr "\t" "\n" | cat -n | grep "submitted_ftp" | cut -f 1) $(RAW)deposited_list.txt > $(RAW)fastq.gz.txt
+	tail -n +2 $(RAW)fastq.gz.txt | tr ";" "\n" > $(RAW)fastq.gz_list.txt
+	sed -e "s/^/ftp:\/\//" -i $(RAW)fastq.gz_list.txt
+	wget -i $(RAW)fastq.gz_list.txt -P $(RAW)
+	gzip -d $(RAW)*.gz
 
 # Here we go from the raw fastq files and the files file to generate a fasta,
 # taxonomy, and count_table file that has had the chimeras removed as well as
